@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/catalogo-cucine",
+      "destination": "/catalogo-cucine.html"
+    },
+    {
+      "source": "/cucine/:slug",
+      "destination": "/cucine/:slug.html"
+    }
+  ]
+}
