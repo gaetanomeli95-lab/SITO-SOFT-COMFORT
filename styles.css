@@ -908,21 +908,28 @@ h1 {
 .collection-bedroom {
   --collection-image: url("CAMERA DA LETTO.png");
   grid-column: span 2;
-  grid-row: span 3;
+  grid-row: span 2;
   background-position: 39% center;
+}
+
+.collection-kids {
+  --collection-image: url("CAMERA DA LETTO.png");
+  grid-column: span 2;
+  grid-row: span 2;
+  background-position: 68% center;
 }
 
 .collection-living {
   --collection-image: url("ZONA LIVING.png");
   grid-column: span 3;
-  grid-row: span 3;
+  grid-row: span 2;
   background-position: 62% center;
 }
 
 .collection-chairs {
   --collection-image: url("SEDIE E COMPLEMENTI.png");
   grid-column: span 3;
-  grid-row: span 3;
+  grid-row: span 2;
   background-position: 50% 62%;
 }
 

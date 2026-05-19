@@ -7,8 +7,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const siteRoot = path.resolve(__dirname, '..', '..');
 const publicAssetsDir = path.join(siteRoot, 'catalogo-assets');
-const publicDetailsDir = path.join(siteRoot, 'cucine');
-const publicCatalogPath = path.join(siteRoot, 'catalogo-cucine.html');
+const catalogMode = process.argv[2] === 'camere' ? 'camere' : 'cucine';
+const publicDetailsDir = path.join(siteRoot, catalogMode === 'camere' ? 'camere-camerette' : 'cucine');
+const publicCatalogPath = path.join(siteRoot, catalogMode === 'camere' ? 'catalogo-camere-camerette.html' : 'catalogo-cucine.html');
 
 const imageExtensions = new Set(['.jpg', '.jpeg', '.png']);
 const mimeTypes = {
