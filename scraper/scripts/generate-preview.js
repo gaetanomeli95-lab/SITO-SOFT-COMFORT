@@ -208,7 +208,6 @@ const cacheGalleryImages = async (product) => {
 
 const renderProduct = (product) => {
   const cover = product.publicCover || '';
-  const finishes = product.technicalFeatures?.finishes || [];
   const category = product.publicCategory || product.category;
   const title = sanitizePublicText(product.publicTitle || product.title);
   const subtitle = sanitizePublicText(product.subtitle);
@@ -226,9 +225,6 @@ const renderProduct = (product) => {
         <h2>${escapeHtml(title)}</h2>
         ${subtitle ? `<h3>${escapeHtml(subtitle)}</h3>` : ''}
         <p>${escapeHtml(description)}</p>
-        <div class="finish-list">
-          ${finishes.slice(0, 6).map((finish) => `<span>${escapeHtml(sanitizePublicText(finish))}</span>`).join('')}
-        </div>
         <a class="product-detail-link" href="${escapeHtml(detailUrl)}">Guarda dettagli e gallery</a>
         <a class="product-cta" href="${createWhatsappUrl(product)}" target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
       </div>
@@ -770,6 +766,7 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
+      align-items: stretch;
     }
 
     .category-section {
@@ -811,6 +808,9 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     }
 
     .product-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 30px;
@@ -866,8 +866,10 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
 
     .product-body {
       display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
       gap: 14px;
       padding: 22px;
+      flex: 1;
     }
 
     .product-category {
@@ -894,10 +896,14 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     }
 
     .product-body > p:not(.product-category) {
+      display: -webkit-box;
       margin: 0;
+      overflow: hidden;
       color: var(--muted);
       font-size: 0.92rem;
       line-height: 1.7;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
     }
 
     .finish-list {
@@ -933,6 +939,7 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     }
 
     .product-detail-link {
+      align-self: end;
       color: var(--gold);
       font-size: 0.82rem;
       font-weight: 900;
