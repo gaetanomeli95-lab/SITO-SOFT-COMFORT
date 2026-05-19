@@ -239,9 +239,8 @@ const renderProduct = (product) => {
 const renderCategorySection = (category, products) => `
   <section class="category-section">
     <div class="category-heading">
-      <span>${escapeHtml(String(products.length).padStart(2, '0'))}</span>
       <div>
-        <p>Catalogo Soft Comfort</p>
+        <p>${escapeHtml(products.length)} modelli selezionati</p>
         <h2>${escapeHtml(category)}</h2>
       </div>
     </div>
@@ -297,9 +296,9 @@ const renderDetailPage = (product) => {
       color: var(--text);
       font-family: var(--font-body);
       background:
-        radial-gradient(circle at 10% 0%, rgba(242, 15, 31, 0.2), transparent 30%),
-        radial-gradient(circle at 90% 12%, rgba(217, 168, 88, 0.16), transparent 34%),
-        linear-gradient(180deg, #080808, #030303);
+        radial-gradient(circle at 15% 0%, rgba(217, 168, 88, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 8%, rgba(242, 15, 31, 0.12), transparent 30%),
+        linear-gradient(180deg, #120808 0%, #070707 42%, #030303 100%);
     }
 
     a { color: inherit; }
@@ -332,12 +331,12 @@ const renderDetailPage = (product) => {
 
     .hero-image {
       position: relative;
-      min-height: 640px;
+      min-height: 620px;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 38px;
+      border-radius: 34px;
       background: #141414;
-      box-shadow: 0 34px 120px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 34px 110px rgba(0, 0, 0, 0.42);
     }
 
     .hero-image img {
@@ -374,8 +373,8 @@ const renderDetailPage = (product) => {
       gap: 18px;
       padding: 34px;
       border: 1px solid var(--line);
-      border-radius: 38px;
-      background: rgba(255, 255, 255, 0.055);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.035));
       backdrop-filter: blur(18px);
     }
 
@@ -471,10 +470,38 @@ const renderDetailPage = (product) => {
       letter-spacing: -0.055em;
     }
 
+    .gallery-viewer {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .gallery-main {
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      background: #111;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.24s ease, transform 0.45s ease;
+    }
+
+    .gallery-main img.is-changing {
+      opacity: 0;
+      transform: scale(1.035);
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-content: start;
     }
 
     .gallery-grid button {
@@ -484,7 +511,7 @@ const renderDetailPage = (product) => {
       padding: 0;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 22px;
+      border-radius: 18px;
       background: #141414;
       cursor: pointer;
       transition: border-color 0.25s ease, transform 0.25s ease;
@@ -529,7 +556,9 @@ const renderDetailPage = (product) => {
       .detail-hero { grid-template-columns: 1fr; }
       .hero-image { min-height: 320px; }
       .detail-copy { padding: 24px; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-viewer { grid-template-columns: 1fr; }
+      .gallery-main { min-height: 360px; }
+      .gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .section-title { align-items: start; flex-direction: column; }
     }
 
@@ -537,7 +566,9 @@ const renderDetailPage = (product) => {
       .detail-shell { width: calc(100% - 20px); padding-top: 18px; }
       .hero-image { min-height: 260px; }
       .detail-copy { padding: 18px; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .gallery-main { min-height: 280px; }
+      .gallery-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+      .gallery-grid button { flex: 0 0 34%; scroll-snap-align: start; }
       h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
       h2 { font-size: clamp(1.1rem, 4vw, 1.4rem); }
       .btn { padding: 12px 18px; font-size: 0.9rem; }
@@ -549,7 +580,7 @@ const renderDetailPage = (product) => {
     <a class="back-link" href="../catalog-preview.html">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
-        <img data-main-gallery-image src="${escapeHtml(hero)}" alt="${escapeHtml(title)}">
+        <img src="${escapeHtml(hero)}" alt="${escapeHtml(title)}">
         <span>Collezione Soft Comfort</span>
       </div>
       <div class="detail-copy">
@@ -570,12 +601,17 @@ const renderDetailPage = (product) => {
           <h2>Gallery ambiente</h2>
         </div>
       </div>
-      <div class="gallery-grid">
+      <div class="gallery-viewer">
+        <div class="gallery-main">
+          <img data-main-gallery-image src="${escapeHtml(hero)}" alt="${escapeHtml(title)} selezione gallery">
+        </div>
+        <div class="gallery-grid">
         ${gallery.map((image, index) => `
           <button type="button" data-gallery-image="${escapeHtml(image)}" class="${index === 0 ? 'is-active' : ''}" aria-label="${escapeHtml(`${title} vista ${index + 1}`)}">
             <img src="${escapeHtml(image)}" alt="${escapeHtml(`${title} vista ${index + 1}`)}" loading="lazy">
           </button>
         `).join('')}
+        </div>
       </div>
     </section>
     <section class="detail-info">
@@ -654,9 +690,9 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       color: var(--text);
       font-family: var(--font-body);
       background:
-        radial-gradient(circle at 20% 0%, rgba(242, 15, 31, 0.2), transparent 34%),
-        radial-gradient(circle at 80% 10%, rgba(217, 168, 88, 0.15), transparent 32%),
-        linear-gradient(180deg, #080808, #030303);
+        radial-gradient(circle at 18% 0%, rgba(217, 168, 88, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(242, 15, 31, 0.1), transparent 30%),
+        linear-gradient(180deg, #120808 0%, #090707 36%, #030303 100%);
     }
 
     main {
@@ -667,8 +703,13 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
 
     .preview-hero {
       display: grid;
-      gap: 18px;
-      margin-bottom: 42px;
+      gap: 20px;
+      margin-bottom: 52px;
+      padding: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      box-shadow: 0 30px 110px rgba(0, 0, 0, 0.25);
     }
 
     .catalog-topline {
@@ -733,34 +774,30 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
 
     .category-section {
       display: grid;
-      gap: 22px;
-      margin-top: 54px;
+      gap: 24px;
+      margin-top: 64px;
     }
 
     .category-heading {
       display: flex;
-      align-items: end;
-      justify-content: space-between;
+      align-items: start;
+      justify-content: flex-start;
       gap: 24px;
-      padding-bottom: 18px;
+      padding-bottom: 20px;
       border-bottom: 1px solid var(--line);
     }
 
     .category-heading > span {
-      color: rgba(217, 168, 88, 0.26);
-      font-family: var(--font-display);
-      font-size: clamp(3.2rem, 10vw, 8rem);
-      line-height: 0.8;
-      letter-spacing: -0.08em;
+      display: none;
     }
 
     .category-heading p {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       color: var(--gold);
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       font-weight: 900;
       letter-spacing: 0.18em;
-      text-align: right;
+      text-align: left;
       text-transform: uppercase;
     }
 
@@ -770,15 +807,15 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       font-size: clamp(2.2rem, 5vw, 4.8rem);
       line-height: 0.92;
       letter-spacing: -0.055em;
-      text-align: right;
+      text-align: left;
     }
 
     .product-card {
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 32px;
-      background: rgba(255, 255, 255, 0.055);
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.068), rgba(255, 255, 255, 0.03));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
       backdrop-filter: blur(16px);
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
@@ -792,7 +829,7 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     .product-media {
       position: relative;
       display: block;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 1.08 / 1;
       overflow: hidden;
       color: inherit;
       text-decoration: none;
@@ -830,7 +867,7 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     .product-body {
       display: grid;
       gap: 14px;
-      padding: 24px;
+      padding: 22px;
     }
 
     .product-category {
@@ -867,13 +904,13 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      min-height: 35px;
+      min-height: 0;
     }
 
     .finish-list span {
       padding: 7px 10px;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 999px;
+      border-radius: 18px;
       color: rgba(255, 255, 255, 0.72);
       background: rgba(255, 255, 255, 0.045);
       font-size: 0.72rem;
@@ -884,9 +921,9 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
+      min-height: 52px;
       padding: 0 18px;
-      border-radius: 999px;
+      border-radius: 18px;
       color: #fff;
       background: linear-gradient(135deg, var(--red), var(--red-dark));
       box-shadow: 0 16px 38px rgba(242, 15, 31, 0.28);
@@ -925,6 +962,7 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
 
     @media (max-width: 480px) {
       main { width: calc(100% - 20px); padding: 32px 0; }
+      .preview-hero { padding: 24px; border-radius: 26px; }
       .catalog-grid { gap: 16px; }
       .product-body { padding: 16px; }
       .preview-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }

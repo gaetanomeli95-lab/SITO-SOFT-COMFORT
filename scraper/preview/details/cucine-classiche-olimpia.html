@@ -28,9 +28,9 @@
       color: var(--text);
       font-family: var(--font-body);
       background:
-        radial-gradient(circle at 10% 0%, rgba(242, 15, 31, 0.2), transparent 30%),
-        radial-gradient(circle at 90% 12%, rgba(217, 168, 88, 0.16), transparent 34%),
-        linear-gradient(180deg, #080808, #030303);
+        radial-gradient(circle at 15% 0%, rgba(217, 168, 88, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 8%, rgba(242, 15, 31, 0.12), transparent 30%),
+        linear-gradient(180deg, #120808 0%, #070707 42%, #030303 100%);
     }
 
     a { color: inherit; }
@@ -63,12 +63,12 @@
 
     .hero-image {
       position: relative;
-      min-height: 640px;
+      min-height: 620px;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 38px;
+      border-radius: 34px;
       background: #141414;
-      box-shadow: 0 34px 120px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 34px 110px rgba(0, 0, 0, 0.42);
     }
 
     .hero-image img {
@@ -105,8 +105,8 @@
       gap: 18px;
       padding: 34px;
       border: 1px solid var(--line);
-      border-radius: 38px;
-      background: rgba(255, 255, 255, 0.055);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.035));
       backdrop-filter: blur(18px);
     }
 
@@ -202,10 +202,38 @@
       letter-spacing: -0.055em;
     }
 
+    .gallery-viewer {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .gallery-main {
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      background: #111;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.24s ease, transform 0.45s ease;
+    }
+
+    .gallery-main img.is-changing {
+      opacity: 0;
+      transform: scale(1.035);
+    }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-content: start;
     }
 
     .gallery-grid button {
@@ -215,7 +243,7 @@
       padding: 0;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 22px;
+      border-radius: 18px;
       background: #141414;
       cursor: pointer;
       transition: border-color 0.25s ease, transform 0.25s ease;
@@ -260,7 +288,9 @@
       .detail-hero { grid-template-columns: 1fr; }
       .hero-image { min-height: 320px; }
       .detail-copy { padding: 24px; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-viewer { grid-template-columns: 1fr; }
+      .gallery-main { min-height: 360px; }
+      .gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .section-title { align-items: start; flex-direction: column; }
     }
 
@@ -268,7 +298,9 @@
       .detail-shell { width: calc(100% - 20px); padding-top: 18px; }
       .hero-image { min-height: 260px; }
       .detail-copy { padding: 18px; }
-      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .gallery-main { min-height: 280px; }
+      .gallery-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+      .gallery-grid button { flex: 0 0 34%; scroll-snap-align: start; }
       h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
       h2 { font-size: clamp(1.1rem, 4vw, 1.4rem); }
       .btn { padding: 12px 18px; font-size: 0.9rem; }
@@ -280,7 +312,7 @@
     <a class="back-link" href="../catalog-preview.html">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
-        <img data-main-gallery-image src="../assets/soft-comfort-cucine-classiche-olimpia-01.jpg" alt="OLIMPIA">
+        <img src="../assets/soft-comfort-cucine-classiche-olimpia-01.jpg" alt="OLIMPIA">
         <span>Collezione Soft Comfort</span>
       </div>
       <div class="detail-copy">
@@ -301,7 +333,11 @@
           <h2>Gallery ambiente</h2>
         </div>
       </div>
-      <div class="gallery-grid">
+      <div class="gallery-viewer">
+        <div class="gallery-main">
+          <img data-main-gallery-image src="../assets/soft-comfort-cucine-classiche-olimpia-01.jpg" alt="OLIMPIA selezione gallery">
+        </div>
+        <div class="gallery-grid">
         
           <button type="button" data-gallery-image="../assets/soft-comfort-cucine-classiche-olimpia-01.jpg" class="is-active" aria-label="OLIMPIA vista 1">
             <img src="../assets/soft-comfort-cucine-classiche-olimpia-01.jpg" alt="OLIMPIA vista 1" loading="lazy">
@@ -343,6 +379,7 @@
             <img src="../assets/soft-comfort-cucine-classiche-olimpia-10.jpg" alt="OLIMPIA vista 10" loading="lazy">
           </button>
         
+        </div>
       </div>
     </section>
     <section class="detail-info">
