@@ -7,3 +7,5 @@ scraper/output/*.json
 scraper/preview/assets/
 .DS_Store
 Thumbs.db
+*.zip
+*.rar
