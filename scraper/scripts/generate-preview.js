@@ -10,6 +10,7 @@ const previewDir = path.join(scraperRoot, 'preview');
 const previewAssetsDir = path.join(previewDir, 'assets');
 const previewDetailsDir = path.join(previewDir, 'details');
 const previewPath = path.join(previewDir, 'catalog-preview.html');
+const catalogMode = process.argv[2] === 'camere' ? 'camere' : 'cucine';
 
 const whatsappNumber = '393929952453';
 
@@ -26,6 +27,8 @@ const sanitizePublicText = (value) => String(value || '')
   .replace(/\bMobilturi\b/gi, 'Soft Comfort')
   .replace(/\bNETCUCINE\b/gi, '')
   .replace(/\bNetcucine\b/gi, '')
+  .replace(/\bMCS MOBILI\b/gi, '')
+  .replace(/\bMCS\b/gi, '')
   .replace(/\bIl gruppo\b/gi, '')
   .replace(/\bFollow us\b/gi, '')
   .replace(/\bSfoglia il Catalogo\b/gi, '')
@@ -69,7 +72,9 @@ const getUnifiedCatalog = async () => {
   const latestBySupplier = new Map();
 
   withStats.forEach((item) => {
-    const supplier = item.catalog.supplier || item.file;
+    const supplier = catalogMode === 'camere'
+      ? `${item.catalog.supplier || item.file}-${item.catalog.category || ''}`
+      : item.catalog.supplier || item.file;
     const current = latestBySupplier.get(supplier);
     if (!current || item.mtime > current.mtime) {
       latestBySupplier.set(supplier, item);
@@ -77,7 +82,24 @@ const getUnifiedCatalog = async () => {
   });
 
   const selectedCatalogs = [...latestBySupplier.values()].sort((a, b) => a.catalog.supplier.localeCompare(b.catalog.supplier, 'it'));
-  const products = selectedCatalogs.flatMap((item) => item.catalog.products || []);
+  const products = selectedCatalogs
+    .flatMap((item) => item.catalog.products || [])
+    .filter((product) => {
+      const haystack = [
+        product.supplier,
+        product.category,
+        product.sourceUrl,
+        product.title,
+        product.subtitle
+      ].join(' ').toLowerCase();
+
+      if (catalogMode === 'camere') {
+        return /mcsmobili|camerette|camera|camere|omnia|afrodite|block|lyra|le-isole-camera/.test(haystack)
+          && !/soggiorni|soggiorno|living/.test(haystack);
+      }
+
+      return /cucina|cucine|mobilturi|netcucine/.test(haystack);
+    });
 
   return {
     supplier: 'Soft Comfort',
@@ -101,6 +123,20 @@ const createWhatsappUrl = (product) => {
 
 const getPublicTitle = (product) => {
   const url = String(product.sourceUrl || '');
+  const mcsMatch = url.match(/\/it\/([^/?#]+)$/);
+
+  if (mcsMatch && /mcsmobili\.com/.test(url)) {
+    const slug = mcsMatch[1].replace(/-\d+$/, '');
+    const formatted = slug
+      .replace(/^omnia-(\d+)-(\d+)$/i, 'OMNIA $1.$2')
+      .replace(/^afrodite-af(\d+)$/i, 'Afrodite AF$1')
+      .replace(/^block-bk(\d+)$/i, 'BLOCK BK$1')
+      .replace(/^lyra-ly(\d+)$/i, 'Lyra LY$1')
+      .replace(/^le-isole-camera-(.+)$/i, (_, name) => `Le Isole - Camera ${name.replace(/-/g, ' ')}`);
+
+    return formatted.replace(/\b\w/g, (letter) => letter.toUpperCase()).replace(/\bOMNIA\b/i, 'OMNIA').replace(/\bBLOCK\b/i, 'BLOCK');
+  }
+
   const titleByUrl = {
     'cucina-old-england': 'AISHA',
     'cucina-con-gola': 'DIAMANTE',
@@ -144,6 +180,14 @@ const getPublicCategory = (product) => {
 
   const classicTitles = new Set(['AISHA', 'INCANTO', 'NINA', 'OLIMPIA', 'TIFFANY']);
 
+  if (catalogMode === 'camere') {
+    if (/lyra|le-isole-camera|\/camere|camera /.test(haystack)) {
+      return 'Camere da letto';
+    }
+
+    return 'Camerette';
+  }
+
   if (
     classicTitles.has(title)
     || /cucina-classica|old england|classich|legno massello|tradizion|intagli|decori|country|shabby/.test(haystack)
@@ -171,19 +215,23 @@ const cacheCoverImage = async (product) => {
     await fs.access(filePath);
     return `assets/${fileName}`;
   } catch {
-    const response = await fetch(source);
-    if (!response.ok) return '';
+    try {
+      const response = await fetch(source);
+      if (!response.ok) return '';
 
-    const buffer = Buffer.from(await response.arrayBuffer());
-    await fs.writeFile(filePath, buffer);
-    return `assets/${fileName}`;
+      const buffer = Buffer.from(await response.arrayBuffer());
+      await fs.writeFile(filePath, buffer);
+      return `assets/${fileName}`;
+    } catch {
+      return '';
+    }
   }
 };
 
 const cacheGalleryImages = async (product) => {
   const category = product.publicCategory || product.category;
   const title = product.publicTitle || product.title;
-  const sources = [...new Set((product.images || []).filter(Boolean))].slice(0, 10);
+  const sources = [...new Set((product.images || []).filter(Boolean))].slice(0, catalogMode === 'camere' ? 4 : 10);
   const images = [];
 
   for (const [index, source] of sources.entries()) {
@@ -193,11 +241,15 @@ const cacheGalleryImages = async (product) => {
     try {
       await fs.access(filePath);
     } catch {
-      const response = await fetch(source);
-      if (!response.ok) continue;
+      try {
+        const response = await fetch(source);
+        if (!response.ok) continue;
 
-      const buffer = Buffer.from(await response.arrayBuffer());
-      await fs.writeFile(filePath, buffer);
+        const buffer = Buffer.from(await response.arrayBuffer());
+        await fs.writeFile(filePath, buffer);
+      } catch {
+        continue;
+      }
     }
 
     images.push(`../assets/${fileName}`);
@@ -206,16 +258,17 @@ const cacheGalleryImages = async (product) => {
   return images;
 };
 
-const renderProduct = (product) => {
+const renderProduct = (product, index = 0) => {
   const cover = product.publicCover || '';
   const category = product.publicCategory || product.category;
   const title = sanitizePublicText(product.publicTitle || product.title);
   const subtitle = sanitizePublicText(product.subtitle);
   const description = sanitizePublicText(product.description);
   const detailUrl = product.detailUrl || '#';
+  const page = Math.floor(index / 12) + 1;
 
   return `
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="${page}">
       <a class="product-media" href="${escapeHtml(detailUrl)}">
         <img src="${escapeHtml(cover)}" alt="${escapeHtml(title)}" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -232,19 +285,39 @@ const renderProduct = (product) => {
   `;
 };
 
-const renderCategorySection = (category, products) => `
-  <section class="category-section">
+const renderCategorySection = (category, products) => {
+  const totalPages = Math.ceil(products.length / 12);
+
+  return `
+  <section class="category-section" id="${escapeHtml(slugify(category))}" data-catalog-section data-current-page="1">
     <div class="category-heading">
       <div>
         <p>${escapeHtml(products.length)} modelli selezionati</p>
         <h2>${escapeHtml(category)}</h2>
       </div>
+      ${totalPages > 1 ? `
+        <div class="catalog-page-status" aria-live="polite">
+          Pagina <span data-current-page-label>1</span> di ${totalPages}
+        </div>
+      ` : ''}
     </div>
     <div class="catalog-grid">
-      ${products.map(renderProduct).join('')}
+      ${products.map((product, index) => renderProduct(product, index)).join('')}
     </div>
+    ${totalPages > 1 ? `
+      <nav class="catalog-pagination" aria-label="Paginazione ${escapeHtml(category)}">
+        <button type="button" data-page-prev>Precedente</button>
+        <div class="catalog-page-numbers">
+          ${Array.from({ length: totalPages }, (_, index) => `
+            <button type="button" data-page-target="${index + 1}" class="${index === 0 ? 'is-active' : ''}">${index + 1}</button>
+          `).join('')}
+        </div>
+        <button type="button" data-page-next>Successiva</button>
+      </nav>
+    ` : ''}
   </section>
 `;
+};
 
 const renderDetailPage = (product) => {
   const category = product.publicCategory || product.category;
@@ -681,14 +754,38 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     * { box-sizing: border-box; }
 
     body {
+      position: relative;
       margin: 0;
       min-height: 100vh;
       color: var(--text);
       font-family: var(--font-body);
       background:
-        radial-gradient(circle at 18% 0%, rgba(217, 168, 88, 0.14), transparent 28%),
-        radial-gradient(circle at 88% 8%, rgba(242, 15, 31, 0.1), transparent 30%),
-        linear-gradient(180deg, #120808 0%, #090707 36%, #030303 100%);
+        radial-gradient(circle at 16% 2%, rgba(217, 168, 88, 0.18), transparent 30%),
+        radial-gradient(circle at 88% 7%, rgba(242, 15, 31, 0.14), transparent 31%),
+        linear-gradient(180deg, #130909 0%, #080707 42%, #030303 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 18vh / min(560px, 78vw) auto no-repeat;
+      opacity: 0.055;
+      filter: blur(1px) saturate(0.7);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.62) 48%, rgba(5, 5, 5, 0.92)),
+        radial-gradient(circle at 50% 22%, transparent 0, rgba(5, 5, 5, 0.6) 48%, rgba(5, 5, 5, 0.92) 100%);
+      pointer-events: none;
     }
 
     main {
@@ -698,14 +795,32 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     }
 
     .preview-hero {
+      position: relative;
       display: grid;
       gap: 20px;
       margin-bottom: 52px;
       padding: 44px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 34px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+        radial-gradient(circle at 82% 24%, rgba(217, 168, 88, 0.18), transparent 36%),
+        radial-gradient(circle at 12% 90%, rgba(242, 15, 31, 0.18), transparent 36%);
       box-shadow: 0 30px 110px rgba(0, 0, 0, 0.25);
+    }
+
+    .preview-hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      bottom: -110px;
+      width: min(420px, 72vw);
+      aspect-ratio: 1;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center / contain no-repeat;
+      opacity: 0.09;
+      filter: grayscale(0.25) blur(0.2px);
+      pointer-events: none;
     }
 
     .catalog-topline {
@@ -770,9 +885,37 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     }
 
     .category-section {
+      position: relative;
       display: grid;
       gap: 24px;
       margin-top: 64px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.095);
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
+        radial-gradient(circle at 92% 12%, rgba(217, 168, 88, 0.12), transparent 32%);
+      box-shadow: 0 28px 100px rgba(0, 0, 0, 0.24);
+    }
+
+    .category-section:nth-of-type(odd) {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
+        radial-gradient(circle at 12% 18%, rgba(242, 15, 31, 0.13), transparent 34%),
+        radial-gradient(circle at 88% 88%, rgba(217, 168, 88, 0.1), transparent 32%);
+    }
+
+    .category-section::before {
+      content: '';
+      position: absolute;
+      right: -64px;
+      top: 18px;
+      width: min(280px, 58vw);
+      aspect-ratio: 1;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center / contain no-repeat;
+      opacity: 0.045;
+      pointer-events: none;
     }
 
     .category-heading {
@@ -782,6 +925,20 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       gap: 24px;
       padding-bottom: 20px;
       border-bottom: 1px solid var(--line);
+    }
+
+    .catalog-page-status {
+      margin-left: auto;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: rgba(248, 244, 238, 0.78);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .category-heading > span {
@@ -824,6 +981,10 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       transform: translateY(-8px);
       border-color: rgba(217, 168, 88, 0.42);
       box-shadow: 0 36px 120px rgba(242, 15, 31, 0.16);
+    }
+
+    .product-card[hidden] {
+      display: none;
     }
 
     .product-media {
@@ -957,12 +1118,60 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
       box-shadow: 0 20px 48px rgba(242, 15, 31, 0.4);
     }
 
+    .catalog-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    .catalog-pagination button {
+      min-height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 999px;
+      padding: 0 16px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.055);
+      font-family: var(--font-body);
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.22s ease;
+    }
+
+    .catalog-page-numbers {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .catalog-page-numbers button {
+      width: 46px;
+      padding: 0;
+    }
+
+    .catalog-pagination button:hover,
+    .catalog-pagination button.is-active {
+      border-color: rgba(217, 168, 88, 0.52);
+      background: linear-gradient(135deg, rgba(242, 15, 31, 0.72), rgba(156, 6, 16, 0.88));
+      transform: translateY(-2px);
+    }
+
+    .catalog-pagination button:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     @media (max-width: 900px) {
       main { width: min(100% - 28px, 560px); padding: 46px 0; }
       .catalog-topline { align-items: start; flex-direction: column; }
       .catalog-grid { grid-template-columns: 1fr; }
       .product-body { padding: 20px; }
       .category-heading { align-items: start; flex-direction: column; }
+      .catalog-page-status { margin-left: 0; }
       .category-heading p,
       .category-heading h2 { text-align: left; }
     }
@@ -970,7 +1179,11 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
     @media (max-width: 480px) {
       main { width: calc(100% - 20px); padding: 32px 0; }
       .preview-hero { padding: 24px; border-radius: 26px; }
+      .category-section { padding: 18px; border-radius: 26px; }
       .catalog-grid { gap: 16px; }
+      .catalog-pagination { gap: 8px; }
+      .catalog-pagination button { min-height: 44px; padding: 0 12px; font-size: 0.82rem; }
+      .catalog-page-numbers button { width: 42px; }
       .product-body { padding: 16px; }
       .preview-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
       .preview-hero p { font-size: 0.95rem; }
@@ -999,6 +1212,44 @@ const renderPreview = (catalog) => `<!DOCTYPE html>
         sessionStorage.removeItem('catalogScrollPosition');
       }
     })();
+
+    document.querySelectorAll('[data-catalog-section]').forEach((section) => {
+      const items = [...section.querySelectorAll('[data-catalog-item]')];
+      const targets = [...section.querySelectorAll('[data-page-target]')];
+      const previous = section.querySelector('[data-page-prev]');
+      const next = section.querySelector('[data-page-next]');
+      const label = section.querySelector('[data-current-page-label]');
+      const totalPages = Math.max(...items.map((item) => Number(item.dataset.page || 1)));
+
+      const setPage = (page, shouldScroll) => {
+        const nextPage = Math.min(Math.max(page, 1), totalPages);
+        section.dataset.currentPage = String(nextPage);
+
+        items.forEach((item) => {
+          item.hidden = Number(item.dataset.page) !== nextPage;
+        });
+
+        targets.forEach((button) => {
+          button.classList.toggle('is-active', Number(button.dataset.pageTarget) === nextPage);
+        });
+
+        if (previous) previous.disabled = nextPage === 1;
+        if (next) next.disabled = nextPage === totalPages;
+        if (label) label.textContent = String(nextPage);
+
+        if (shouldScroll) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      targets.forEach((button) => {
+        button.addEventListener('click', () => setPage(Number(button.dataset.pageTarget), true));
+      });
+
+      previous?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) - 1, true));
+      next?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) + 1, true));
+      setPage(1, false);
+    });
   </script>
 </body>
 </html>`;

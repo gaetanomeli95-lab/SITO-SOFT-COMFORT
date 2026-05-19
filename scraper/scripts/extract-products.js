@@ -10,11 +10,12 @@ const scraperRoot = path.resolve(__dirname, '..');
 const outputDir = path.join(scraperRoot, 'output');
 
 const supplierKey = process.argv[2];
-const urls = process.argv.slice(3);
+const categoryArg = process.argv[3]?.startsWith('http') ? '' : process.argv[3] || '';
+const urls = process.argv.slice(categoryArg ? 4 : 3);
 const supplierConfig = getSupplier(supplierKey);
 
 if (!supplierKey || urls.length === 0) {
-  console.error('Usage: node scripts/extract-products.js <supplier> <url1> <url2> ...');
+  console.error('Usage: node scripts/extract-products.js <supplier> [categoryName] <url1> <url2> ...');
   process.exit(1);
 }
 
@@ -108,7 +109,7 @@ const extractProduct = async (page, url) => {
     id: `${slugify(supplierKey)}-${slugify(productName)}`,
     supplier: supplierConfig.name,
     sourceUrl: url,
-    category: supplierConfig.defaultCategory,
+    category: categoryArg || supplierConfig.defaultCategory,
     title: productName,
     subtitle: title !== productName ? title : '',
     description,
@@ -145,7 +146,7 @@ try {
 
   const catalog = {
     supplier: supplierConfig.name,
-    category: supplierConfig.defaultCategory,
+    category: categoryArg || supplierConfig.defaultCategory,
     total: products.length,
     products,
     generatedAt: new Date().toISOString()

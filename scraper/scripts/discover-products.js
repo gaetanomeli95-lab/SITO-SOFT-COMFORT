@@ -52,14 +52,20 @@ try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
     await page.waitForTimeout(2500);
 
-    const links = await page.evaluate(() => [...document.querySelectorAll('a[href]')]
+    const links = await page.evaluate((supplierKey) => [...document.querySelectorAll('a[href]')]
       .map((link) => ({
         href: link.href,
         text: link.textContent.trim().replace(/\s+/g, ' ')
       }))
-      .filter((link) => link.href.includes('/cucina/'))
+      .filter((link) => {
+        if (supplierKey === 'mcs') {
+          return /^https:\/\/www\.mcsmobili\.com\/it\/(omnia|afrodite|block|lyra|le-isole-camera)-/i.test(link.href);
+        }
+
+        return link.href.includes('/cucina/');
+      })
       .filter((link) => !/contatti|rivenditori|promozioni|blog|privacy|cookie/i.test(link.href))
-      .filter((link) => link.text.length > 1));
+      .filter((link) => link.text.length > 1), supplierKey);
 
     discovered.push(...links.map((link) => ({
       ...link,

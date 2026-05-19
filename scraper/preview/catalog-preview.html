@@ -24,14 +24,38 @@
     * { box-sizing: border-box; }
 
     body {
+      position: relative;
       margin: 0;
       min-height: 100vh;
       color: var(--text);
       font-family: var(--font-body);
       background:
-        radial-gradient(circle at 18% 0%, rgba(217, 168, 88, 0.14), transparent 28%),
-        radial-gradient(circle at 88% 8%, rgba(242, 15, 31, 0.1), transparent 30%),
-        linear-gradient(180deg, #120808 0%, #090707 36%, #030303 100%);
+        radial-gradient(circle at 16% 2%, rgba(217, 168, 88, 0.18), transparent 30%),
+        radial-gradient(circle at 88% 7%, rgba(242, 15, 31, 0.14), transparent 31%),
+        linear-gradient(180deg, #130909 0%, #080707 42%, #030303 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 18vh / min(560px, 78vw) auto no-repeat;
+      opacity: 0.055;
+      filter: blur(1px) saturate(0.7);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.62) 48%, rgba(5, 5, 5, 0.92)),
+        radial-gradient(circle at 50% 22%, transparent 0, rgba(5, 5, 5, 0.6) 48%, rgba(5, 5, 5, 0.92) 100%);
+      pointer-events: none;
     }
 
     main {
@@ -41,14 +65,32 @@
     }
 
     .preview-hero {
+      position: relative;
       display: grid;
       gap: 20px;
       margin-bottom: 52px;
       padding: 44px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 34px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+        radial-gradient(circle at 82% 24%, rgba(217, 168, 88, 0.18), transparent 36%),
+        radial-gradient(circle at 12% 90%, rgba(242, 15, 31, 0.18), transparent 36%);
       box-shadow: 0 30px 110px rgba(0, 0, 0, 0.25);
+    }
+
+    .preview-hero::after {
+      content: '';
+      position: absolute;
+      right: -80px;
+      bottom: -110px;
+      width: min(420px, 72vw);
+      aspect-ratio: 1;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center / contain no-repeat;
+      opacity: 0.09;
+      filter: grayscale(0.25) blur(0.2px);
+      pointer-events: none;
     }
 
     .catalog-topline {
@@ -113,9 +155,37 @@
     }
 
     .category-section {
+      position: relative;
       display: grid;
       gap: 24px;
       margin-top: 64px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.095);
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
+        radial-gradient(circle at 92% 12%, rgba(217, 168, 88, 0.12), transparent 32%);
+      box-shadow: 0 28px 100px rgba(0, 0, 0, 0.24);
+    }
+
+    .category-section:nth-of-type(odd) {
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
+        radial-gradient(circle at 12% 18%, rgba(242, 15, 31, 0.13), transparent 34%),
+        radial-gradient(circle at 88% 88%, rgba(217, 168, 88, 0.1), transparent 32%);
+    }
+
+    .category-section::before {
+      content: '';
+      position: absolute;
+      right: -64px;
+      top: 18px;
+      width: min(280px, 58vw);
+      aspect-ratio: 1;
+      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center / contain no-repeat;
+      opacity: 0.045;
+      pointer-events: none;
     }
 
     .category-heading {
@@ -125,6 +195,20 @@
       gap: 24px;
       padding-bottom: 20px;
       border-bottom: 1px solid var(--line);
+    }
+
+    .catalog-page-status {
+      margin-left: auto;
+      padding: 12px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: rgba(248, 244, 238, 0.78);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .category-heading > span {
@@ -167,6 +251,10 @@
       transform: translateY(-8px);
       border-color: rgba(217, 168, 88, 0.42);
       box-shadow: 0 36px 120px rgba(242, 15, 31, 0.16);
+    }
+
+    .product-card[hidden] {
+      display: none;
     }
 
     .product-media {
@@ -300,12 +388,60 @@
       box-shadow: 0 20px 48px rgba(242, 15, 31, 0.4);
     }
 
+    .catalog-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 4px;
+    }
+
+    .catalog-pagination button {
+      min-height: 46px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 999px;
+      padding: 0 16px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.055);
+      font-family: var(--font-body);
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.22s ease;
+    }
+
+    .catalog-page-numbers {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .catalog-page-numbers button {
+      width: 46px;
+      padding: 0;
+    }
+
+    .catalog-pagination button:hover,
+    .catalog-pagination button.is-active {
+      border-color: rgba(217, 168, 88, 0.52);
+      background: linear-gradient(135deg, rgba(242, 15, 31, 0.72), rgba(156, 6, 16, 0.88));
+      transform: translateY(-2px);
+    }
+
+    .catalog-pagination button:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     @media (max-width: 900px) {
       main { width: min(100% - 28px, 560px); padding: 46px 0; }
       .catalog-topline { align-items: start; flex-direction: column; }
       .catalog-grid { grid-template-columns: 1fr; }
       .product-body { padding: 20px; }
       .category-heading { align-items: start; flex-direction: column; }
+      .catalog-page-status { margin-left: 0; }
       .category-heading p,
       .category-heading h2 { text-align: left; }
     }
@@ -313,7 +449,11 @@
     @media (max-width: 480px) {
       main { width: calc(100% - 20px); padding: 32px 0; }
       .preview-hero { padding: 24px; border-radius: 26px; }
+      .category-section { padding: 18px; border-radius: 26px; }
       .catalog-grid { gap: 16px; }
+      .catalog-pagination { gap: 8px; }
+      .catalog-pagination button { min-height: 44px; padding: 0 12px; font-size: 0.82rem; }
+      .catalog-page-numbers button { width: 42px; }
       .product-body { padding: 16px; }
       .preview-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
       .preview-hero p { font-size: 0.95rem; }
@@ -333,16 +473,21 @@
       <p>Una selezione di soluzioni cucina pensata per accompagnare il cliente dalla prima ispirazione alla consulenza in showroom. Nessun prezzo online: ogni proposta viene progettata su misura da Soft Comfort.</p>
     </section>
     
-  <section class="category-section">
+  <section class="category-section" id="cucine-classiche" data-catalog-section data-current-page="1">
     <div class="category-heading">
       <div>
         <p>13 modelli selezionati</p>
         <h2>Cucine classiche</h2>
       </div>
+      
+        <div class="catalog-page-status" aria-live="polite">
+          Pagina <span data-current-page-label>1</span> di 2
+        </div>
+      
     </div>
     <div class="catalog-grid">
       
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-aisha.html">
         <img src="assets/soft-comfort-cucine-classiche-aisha-cover.jpg" alt="AISHA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -357,7 +502,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-incanto.html">
         <img src="assets/soft-comfort-cucine-classiche-incanto-cover.jpg" alt="INCANTO" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -372,7 +517,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-nina.html">
         <img src="assets/soft-comfort-cucine-classiche-nina-cover.jpg" alt="NINA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -387,7 +532,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-olimpia.html">
         <img src="assets/soft-comfort-cucine-classiche-olimpia-cover.jpg" alt="OLIMPIA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -402,7 +547,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-tiffany.html">
         <img src="assets/soft-comfort-cucine-classiche-tiffany-cover.jpg" alt="TIFFANY" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -417,7 +562,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-delizia.html">
         <img src="assets/soft-comfort-cucine-classiche-delizia-cover.jpg" alt="DELIZIA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -432,7 +577,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-dora.html">
         <img src="assets/soft-comfort-cucine-classiche-dora-cover.jpg" alt="DORA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -447,7 +592,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-elsa.html">
         <img src="assets/soft-comfort-cucine-classiche-elsa-cover.jpg" alt="ELSA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -462,7 +607,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-kelly.html">
         <img src="assets/soft-comfort-cucine-classiche-kelly-cover.jpg" alt="KELLY" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -477,7 +622,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-kira.html">
         <img src="assets/soft-comfort-cucine-classiche-kira-cover.jpg" alt="KIRA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -492,7 +637,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-sandy.html">
         <img src="assets/soft-comfort-cucine-classiche-sandy-cover.jpg" alt="SANDY" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -507,7 +652,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-classiche-smart.html">
         <img src="assets/soft-comfort-cucine-classiche-smart-cover.jpg" alt="SMART" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -522,7 +667,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="2">
       <a class="product-media" href="details/cucine-classiche-bea.html">
         <img src="assets/soft-comfort-cucine-classiche-bea-cover.jpg" alt="BEA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -538,18 +683,32 @@
     </article>
   
     </div>
+    
+      <nav class="catalog-pagination" aria-label="Paginazione Cucine classiche">
+        <button type="button" data-page-prev>Precedente</button>
+        <div class="catalog-page-numbers">
+          
+            <button type="button" data-page-target="1" class="is-active">1</button>
+          
+            <button type="button" data-page-target="2" class="">2</button>
+          
+        </div>
+        <button type="button" data-page-next>Successiva</button>
+      </nav>
+    
   </section>
 
-  <section class="category-section">
+  <section class="category-section" id="cucine-moderne" data-catalog-section data-current-page="1">
     <div class="category-heading">
       <div>
         <p>11 modelli selezionati</p>
         <h2>Cucine moderne</h2>
       </div>
+      
     </div>
     <div class="catalog-grid">
       
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-diamante.html">
         <img src="assets/soft-comfort-cucine-moderne-diamante-cover.jpg" alt="DIAMANTE" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -564,7 +723,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-gaia-pet.html">
         <img src="assets/soft-comfort-cucine-moderne-gaia-pet-cover.jpg" alt="GAIA PET" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -579,7 +738,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-lea.html">
         <img src="assets/soft-comfort-cucine-moderne-lea-cover.jpg" alt="LEA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -594,7 +753,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-luna.html">
         <img src="assets/soft-comfort-cucine-moderne-luna-cover.jpg" alt="LUNA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -609,7 +768,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-nala.html">
         <img src="assets/soft-comfort-cucine-moderne-nala-cover.jpg" alt="NALA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -624,7 +783,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-nevada.html">
         <img src="assets/soft-comfort-cucine-moderne-nevada-cover.jpg" alt="NEVADA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -639,7 +798,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-onda.html">
         <img src="assets/soft-comfort-cucine-moderne-onda-cover.jpg" alt="ONDA" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -654,7 +813,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-pop.html">
         <img src="assets/soft-comfort-cucine-moderne-pop-cover.jpg" alt="POP" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -669,7 +828,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-star.html">
         <img src="assets/soft-comfort-cucine-moderne-star-cover.jpg" alt="STAR" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -684,7 +843,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-stratos.html">
         <img src="assets/soft-comfort-cucine-moderne-stratos-cover.jpg" alt="STRATOS" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -699,7 +858,7 @@
       </div>
     </article>
   
-    <article class="product-card">
+    <article class="product-card" data-catalog-item data-page="1">
       <a class="product-media" href="details/cucine-moderne-zante.html">
         <img src="assets/soft-comfort-cucine-moderne-zante-cover.jpg" alt="ZANTE" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -715,6 +874,7 @@
     </article>
   
     </div>
+    
   </section>
 
   </main>
@@ -726,6 +886,44 @@
         sessionStorage.removeItem('catalogScrollPosition');
       }
     })();
+
+    document.querySelectorAll('[data-catalog-section]').forEach((section) => {
+      const items = [...section.querySelectorAll('[data-catalog-item]')];
+      const targets = [...section.querySelectorAll('[data-page-target]')];
+      const previous = section.querySelector('[data-page-prev]');
+      const next = section.querySelector('[data-page-next]');
+      const label = section.querySelector('[data-current-page-label]');
+      const totalPages = Math.max(...items.map((item) => Number(item.dataset.page || 1)));
+
+      const setPage = (page, shouldScroll) => {
+        const nextPage = Math.min(Math.max(page, 1), totalPages);
+        section.dataset.currentPage = String(nextPage);
+
+        items.forEach((item) => {
+          item.hidden = Number(item.dataset.page) !== nextPage;
+        });
+
+        targets.forEach((button) => {
+          button.classList.toggle('is-active', Number(button.dataset.pageTarget) === nextPage);
+        });
+
+        if (previous) previous.disabled = nextPage === 1;
+        if (next) next.disabled = nextPage === totalPages;
+        if (label) label.textContent = String(nextPage);
+
+        if (shouldScroll) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      targets.forEach((button) => {
+        button.addEventListener('click', () => setPage(Number(button.dataset.pageTarget), true));
+      });
+
+      previous?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) - 1, true));
+      next?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) + 1, true));
+      setPage(1, false);
+    });
   </script>
 </body>
 </html>
