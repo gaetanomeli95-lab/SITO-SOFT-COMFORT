@@ -1,0 +1,24 @@
+{
+  "name": "soft-comfort-scraper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "analyze": "node scripts/analyze-page.js",
+    "analyze:mobilturi": "node scripts/analyze-page.js https://www.mobilturi.it/ mobilturi",
+    "analyze:netcucine": "node scripts/analyze-page.js https://www.netcucine.it/ netcucine",
+    "analyze:mcs": "node scripts/analyze-page.js https://www.mcsmobili.com/it/camerette mcs",
+    "discover": "node scripts/discover-products.js",
+    "discover:mobilturi:moderne": "node scripts/discover-products.js mobilturi \"Cucine moderne\" \"https://www.mobilturi.it/cucine-moderne/?wpv-wpcf-style=1\"",
+    "discover:mobilturi:classiche": "node scripts/discover-products.js mobilturi \"Cucine classiche\" \"https://www.mobilturi.it/cucine-classiche/?wpv-wpcf-style=2\"",
+    "extract": "node scripts/extract-products.js",
+    "extract:mobilturi": "node scripts/extract-products.js mobilturi https://www.mobilturi.it/cucina/cucina-in-pet/ https://www.mobilturi.it/cucina/cucina-elegante/ https://www.mobilturi.it/cucina/cucina-contemporanea-stratos/",
+    "extract:netcucine": "node scripts/extract-products.js netcucine https://www.netcucine.it/cucine/cucina-moderna-delizia/ https://www.netcucine.it/cucine/cucina-moderna-funzionale/ https://www.netcucine.it/cucine/cucina-moderna-elsa/ https://www.netcucine.it/cucine/cucina-moderna-kelly/ https://www.netcucine.it/cucine/cucina-moderna-kira/ https://www.netcucine.it/cucine/sistema-gola-sandy/ https://www.netcucine.it/cucine/cucina-moderna-newsmart/ https://www.netcucine.it/cucine/cucina-classica-bea/",
+    "preview": "node scripts/generate-preview.js",
+    "optimize:public": "node scripts/optimize-public-images.js",
+    "export:public": "node scripts/generate-preview.js && node scripts/export-public-catalog.js && node scripts/optimize-public-images.js"
+  },
+  "dependencies": {
+    "playwright": "^1.44.1"
+  }
+}

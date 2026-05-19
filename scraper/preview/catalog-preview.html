@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preview Catalogo Soft Comfort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #050505;
+      --panel: #111;
+      --red: #f20f1f;
+      --red-dark: #a90914;
+      --gold: #d9a858;
+      --text: #f8f4ee;
+      --muted: rgba(248, 244, 238, 0.68);
+      --line: rgba(255, 255, 255, 0.12);
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Playfair Display', serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(242, 15, 31, 0.2), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(217, 168, 88, 0.15), transparent 32%),
+        linear-gradient(180deg, #080808, #030303);
+    }
+
+    main {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 70px 0;
+    }
+
+    .preview-hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+
+    .catalog-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .catalog-back {
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      gap: 10px;
+      align-items: center;
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 42px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--red);
+    }
+
+    h1 {
+      max-width: 820px;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+    }
+
+    .preview-hero p {
+      max-width: 690px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category-section {
+      display: grid;
+      gap: 22px;
+      margin-top: 54px;
+    }
+
+    .category-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .category-heading > span {
+      color: rgba(217, 168, 88, 0.26);
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 10vw, 8rem);
+      line-height: 0.8;
+      letter-spacing: -0.08em;
+    }
+
+    .category-heading p {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .category-heading h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4.8rem);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+      text-align: right;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(16px);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(217, 168, 88, 0.42);
+      box-shadow: 0 36px 120px rgba(242, 15, 31, 0.16);
+    }
+
+    .product-media {
+      position: relative;
+      display: block;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      color: inherit;
+      text-decoration: none;
+      background: #161616;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.55s ease, filter 0.55s ease;
+    }
+
+    .product-card:hover .product-media img {
+      transform: scale(1.09);
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .product-media span {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.48);
+      backdrop-filter: blur(12px);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .product-body {
+      display: grid;
+      gap: 14px;
+      padding: 24px;
+    }
+
+    .product-category {
+      margin: 0;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    h3 {
+      margin: -6px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+
+    .product-body > p:not(.product-category) {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .finish-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 35px;
+    }
+
+    .finish-list span {
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .product-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      box-shadow: 0 16px 38px rgba(242, 15, 31, 0.28);
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .product-detail-link {
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .product-detail-link:hover {
+      color: #fff;
+    }
+
+    .product-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 48px rgba(242, 15, 31, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      main { width: min(100% - 28px, 560px); padding: 46px 0; }
+      .catalog-topline { align-items: start; flex-direction: column; }
+      .catalog-grid { grid-template-columns: 1fr; }
+      .product-body { padding: 20px; }
+      .category-heading { align-items: start; flex-direction: column; }
+      .category-heading p,
+      .category-heading h2 { text-align: left; }
+    }
+
+    @media (max-width: 480px) {
+      main { width: calc(100% - 20px); padding: 32px 0; }
+      .catalog-grid { gap: 16px; }
+      .product-body { padding: 16px; }
+      .preview-hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
+      .preview-hero p { font-size: 0.95rem; }
+      .category-heading h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+      .category-heading p { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="catalog-topline">
+      <a class="catalog-back" href="index.html">← Torna al sito</a>
+    </div>
+    <section class="preview-hero">
+      <span class="eyebrow">Preview catalogo</span>
+      <h1>Showroom digitale Soft Comfort</h1>
+      <p>Una selezione di soluzioni cucina pensata per accompagnare il cliente dalla prima ispirazione alla consulenza in showroom. Nessun prezzo online: ogni proposta viene progettata su misura da Soft Comfort.</p>
+    </section>
+    
+  <section class="category-section">
+    <div class="category-heading">
+      <span>13</span>
+      <div>
+        <p>Catalogo Soft Comfort</p>
+        <h2>Cucine classiche</h2>
+      </div>
+    </div>
+    <div class="catalog-grid">
+      
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-aisha.html">
+        <img src="assets/soft-comfort-cucine-classiche-aisha-cover.jpg" alt="AISHA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>AISHA</h2>
+        <h3>Cucine di classe ed eleganti</h3>
+        <p>Cucina Old England: Aisha con sagome morbide e sinuose, colori caldi, elementi in legno massiccio, gusto moderno e classico e alta funzionalità.</p>
+        <div class="finish-list">
+          
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-aisha.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20AISHA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-incanto.html">
+        <img src="assets/soft-comfort-cucine-classiche-incanto-cover.jpg" alt="INCANTO" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>INCANTO</h2>
+        <h3>Una cucina in legno massello con presa maniglia integrata</h3>
+        <p>Soft Comfort aggiunge alla sua collezione l’unicità di una cucina elegante impreziosita da una lavorazione artigianale e orientato alle più innovative soluzioni progettuali. Il telaio in massello con la presa maniglia integrata, suggella la robustezza dell’anta.</p>
+        <div class="finish-list">
+          <span>INCANTO / frassino canapa, frassino carbone</span><span>INCANTO / frassino ghisa, frassino bianco assoluto</span><span>INCANTO / frassino bianco assoluto, antracite opaco</span><span>INCANTO / frassino carbone, silver opaco</span><span>INCANTO / fango opaco</span><span>INCANTO / frassino ardesia, frassino madreperla</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-incanto.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20INCANTO.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-nina.html">
+        <img src="assets/soft-comfort-cucine-classiche-nina-cover.jpg" alt="NINA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>NINA</h2>
+        <h3>Cucina in legno massello. NINA è il legno che si anima nelle forme perfette.</h3>
+        <p>Nina una cucina in legno massello con elementi in acciaio. Le mensole illuminate e led creano giochi di luce che esaltano forme ed essenze.</p>
+        <div class="finish-list">
+          <span>Cucina in legno massello. NINA è il legno che si anima nelle forme perfette.</span><span>Ante con pannello centrale finitura peltro</span><span>Ante con pannello centrale finitura lavagna</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-nina.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20NINA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-olimpia.html">
+        <img src="assets/soft-comfort-cucine-classiche-olimpia-cover.jpg" alt="OLIMPIA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>OLIMPIA</h2>
+        <h3>Poesia e tradizione</h3>
+        <p>Olimpia, una cucina pratica con una cura per i dettagli, con uno stile classico tradizionale. Una soluzione elegante per una cucina funzionale.</p>
+        <div class="finish-list">
+          <span>OLIMPIA / noce, perla bianco</span><span>noce perla bianco</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-olimpia.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20OLIMPIA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-tiffany.html">
+        <img src="assets/soft-comfort-cucine-classiche-tiffany-cover.jpg" alt="TIFFANY" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>TIFFANY</h2>
+        <h3>Cucina con maniglia e sistema gola</h3>
+        <p>Soft Comfort aggiunge alla sua collezione il modello Tiffany</p>
+        <div class="finish-list">
+          <span>TIFFANY / grigio bromo opaco RAL NALA / rovere savana</span><span>fango opaco</span><span>frassino ardesia, frassino madreperla</span><span>frassino canapa, frassino carbone</span><span>frassino ghisa, frassino bianco assoluto</span><span>frassino bianco assoluto, antracite opaco</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-tiffany.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20TIFFANY.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-delizia.html">
+        <img src="assets/soft-comfort-cucine-classiche-delizia-cover.jpg" alt="DELIZIA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>DELIZIA</h2>
+        
+        <p>Cucina moderna Delizia, una cucina estremamente elegante, che unisce il design del profilo a gola alla particolare lavorazione fresata del bordo dell’anta.</p>
+        <div class="finish-list">
+          <span>Ante finitura opaca</span><span>Ante finitura lucida</span><span>Ante finitura legno</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-delizia.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20DELIZIA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-dora.html">
+        <img src="assets/soft-comfort-cucine-classiche-dora-cover.jpg" alt="DORA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>DORA</h2>
+        
+        <p>Cucina moderna e funzionale Dora con maniglia e sistema gola. Dora è un mix di luce e calore. Fatevi travolgere da un ambiente essenziale.</p>
+        <div class="finish-list">
+          <span>Ante e Vetrine finitura opaca</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-dora.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20DORA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-elsa.html">
+        <img src="assets/soft-comfort-cucine-classiche-elsa-cover.jpg" alt="ELSA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>ELSA</h2>
+        
+        <p>Cucina moderna Elsa, contemporanea nello stile con dettagli ricercati che rendono gli ambienti cucina unici e inimitabili. Un fascino senza tempo.</p>
+        <div class="finish-list">
+          
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-elsa.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20ELSA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-kelly.html">
+        <img src="assets/soft-comfort-cucine-classiche-kelly-cover.jpg" alt="KELLY" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>KELLY</h2>
+        
+        <p>Cucina moderna Kelly con la sua autentica bellezza in una soluzione armonica di moduli simmetrici e combinazioni di colori e finiture.</p>
+        <div class="finish-list">
+          <span>Ante finitura opaca legno</span><span>Ante finitura opaca</span><span>Ante finitura effetto marmo bianco</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-kelly.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20KELLY.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-kira.html">
+        <img src="assets/soft-comfort-cucine-classiche-kira-cover.jpg" alt="KIRA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>KIRA</h2>
+        
+        <p>Cucina moderna Kira con finitura yosemite. I pensili ritrovano una collocazione meno tradizionale, sospesi in fila e accostati alle basi.</p>
+        <div class="finish-list">
+          <span>Ante finitura lucida</span><span>Ante finitura yosemite</span><span>Ante finitura legno</span><span>Ante finitura cemento</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-kira.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20KIRA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-sandy.html">
+        <img src="assets/soft-comfort-cucine-classiche-sandy-cover.jpg" alt="SANDY" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>SANDY</h2>
+        
+        <p>Sistema gola Sandy, un mosaico di emozioni. Permette di valorizzare e armonizzare gli spazi, ad un prezzo conveniente.</p>
+        <div class="finish-list">
+          <span>Ante finitura dune</span><span>Ante finitura polvere</span><span>Ante finitura legno</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-sandy.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20SANDY.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-smart.html">
+        <img src="assets/soft-comfort-cucine-classiche-smart-cover.jpg" alt="SMART" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>SMART</h2>
+        
+        <p>Cucina moderna Smart, presenta un progetto studiato ad hoc. Altezze e moduli diversi si combinano per offrire una maggiore capienza.</p>
+        <div class="finish-list">
+          <span>Ante finitura legno</span><span>Ante finitura olmo</span><span>Ante finitura opaca tinta unita</span><span>Ante finitura cemento</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-smart.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20SMART.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-classiche-bea.html">
+        <img src="assets/soft-comfort-cucine-classiche-bea-cover.jpg" alt="BEA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine classiche</p>
+        <h2>BEA</h2>
+        
+        <p>Cucina classica Bea l’elegante geometria si abbina agli elettrodomestici e accessori dalle finiture moderne. Disponibile in 4 colori.</p>
+        <div class="finish-list">
+          
+        </div>
+        <a class="product-detail-link" href="details/cucine-classiche-bea.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20BEA.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    </div>
+  </section>
+
+  <section class="category-section">
+    <div class="category-heading">
+      <span>11</span>
+      <div>
+        <p>Catalogo Soft Comfort</p>
+        <h2>Cucine moderne</h2>
+      </div>
+    </div>
+    <div class="catalog-grid">
+      
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-diamante.html">
+        <img src="assets/soft-comfort-cucine-moderne-diamante-cover.jpg" alt="DIAMANTE" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>DIAMANTE</h2>
+        <h3>Cucina con sistema gola</h3>
+        <p>La cucina con gola Diamante è progettata con un&#039;estetica elegante ed un design impeccabile ma che fa della funzionalità uno dei suoi punti di forza.</p>
+        <div class="finish-list">
+          <span>Anta a telaio IN MDF spessore 22mm CON RIVESTIMENTO IN PET</span><span>bianco opaco PET</span><span>perla opaco PET</span><span>verde opaco PET</span><span>grafite opaco PET</span><span>bronzo metal PET</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-diamante.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20DIAMANTE.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-gaia-pet.html">
+        <img src="assets/soft-comfort-cucine-moderne-gaia-pet-cover.jpg" alt="GAIA PET" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>GAIA PET</h2>
+        <h3>La scelta di valore per una cucina “green” e di qualità.</h3>
+        <p>La cucina GAIA è anche in PET, una scelta green per un design elegante, pratico e di qualità, disponibile con anta liscia o a telaio, con maniglia oppure con gola. Il PET è un materiale riciclabile al 100%, totalmente privo di sostanze tossiche. Igienico e resistente ai graffi, si caratterizza anche per la superficie brillante e senza aloni.</p>
+        <div class="finish-list">
+          <span>GAIA PET Telaio / bianco opaco GAIA PET Telaio / verde opaco</span><span>GAIA PET / bianco lucido GAIA PET Telaio / tortora opaco</span><span>GAIA PET / tortora opaco GAIA PET Telaio e Anta liscia / sahara opaco</span><span>GAIA PET / blu opaco GAIA PET Telaio / bianco opaco</span><span>GAIA PET</span><span>sahara opaco. tortora opaco</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-gaia-pet.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20GAIA%20PET.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-lea.html">
+        <img src="assets/soft-comfort-cucine-moderne-lea-cover.jpg" alt="LEA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>LEA</h2>
+        <h3>Una cucina elegante e funzionale con la presa maniglia integrata</h3>
+        <p>Soft Comfort aggiunge alla sua collezione una cucina che esprime tutta la sua solidità e autenticità in layout versatili e originali per navigare verso nuovi orizzonti dell’abitare. Impreziosita dalla presa maniglia integrata nel duplice telaio, conferisce agli ambienti cucina un’eleganza funzionale.</p>
+        <div class="finish-list">
+          <span>ante e frontali cassetti Finitura legno</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-lea.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20LEA.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-luna.html">
+        <img src="assets/soft-comfort-cucine-moderne-luna-cover.jpg" alt="LUNA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>LUNA</h2>
+        <h3>Un angolo di paradiso.</h3>
+        <p>Luna, cucina elegante, con spazi studiati per un&#039;estetica minimalista ma che fa della praticità uno dei suoi punti di forza e con un design impeccabile.</p>
+        <div class="finish-list">
+          <span>LUNA / pietra chiara. pietra bronzo</span><span>LUNA / noce deciso. latte pet</span><span>LUNA / pietra lava. latte pet</span><span>noce deciso. latte pet</span><span>pietra lava. latte pet</span><span>pietra chiara. pietra bronzo</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-luna.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20LUNA.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-nala.html">
+        <img src="assets/soft-comfort-cucine-moderne-nala-cover.jpg" alt="NALA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>NALA</h2>
+        <h3>Nala si adatta al tuo stile attraverso la ricchezza dei dettagli.</h3>
+        <p>Cucina rovere Nala un intreccio di design e funzione, materiali e spessori combinati secondo progetti autentici e di pregio.</p>
+        <div class="finish-list">
+          <span>NALA / rovere pietra</span><span>rovere pietra</span><span>vetrina con telaio in alluminio finitura brill e vetro stampato screen, spessore 20 mm</span><span>vetrina con telaio anodizzato nel colore nero e vetro temperato fumè, spessore 20 mm</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-nala.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20NALA.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-nevada.html">
+        <img src="assets/soft-comfort-cucine-moderne-nevada-cover.jpg" alt="NEVADA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>NEVADA</h2>
+        <h3>Nevada regala l’armonia e i colori della natura alla tua cucina.</h3>
+        <p>Cucina di qualità e design trovano una nuova dimensione nel colore opaco e nell’essenza del rovere grigio, che vengono esaltate dal top in bianco pietra.</p>
+        <div class="finish-list">
+          <span>NEVADA / olmo beige. antracite lucido</span><span>NEVADA / olmo beige. seta bianco opaco</span><span>NEVADA / tabacco anticato. piombo opaco</span><span>NEVADA / ossido grigio. seta bianco opaco</span><span>ossido grigio. seta bianco opaco</span><span>olmo beige. antracite lucido</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-nevada.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20NEVADA.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-onda.html">
+        <img src="assets/soft-comfort-cucine-moderne-onda-cover.jpg" alt="ONDA" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>ONDA</h2>
+        <h3>Cucina con sistema gola</h3>
+        <p>Onda, cucina elegante, con spazi studiati per un&#039;estetica elegante ma che fa della funzionalità uno dei suoi punti di forza e con un design impeccabile.</p>
+        <div class="finish-list">
+          <span>ONDA / rovere tabacco TIFFANY / bianco 9016 opaco</span><span>ONDA rovere tabacco. TIFFANY bianco 9016 opaco</span><span>Anta cannettata IN MDF spessore 22mm CON RIVESTIMENTO IN PET</span><span>bianco opaco PET</span><span>perla opaco PET</span><span>verde opaco PET</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-onda.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20ONDA.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-pop.html">
+        <img src="assets/soft-comfort-cucine-moderne-pop-cover.jpg" alt="POP" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>POP</h2>
+        <h3>Soft Comfort lancia col programma POP un modello accessibile a tutti.</h3>
+        <p>Cucina minimal POP. Soft Comfort lancia col programma POP un modello di cucina moderna accessibile a tutti.</p>
+        <div class="finish-list">
+          <span>POP / noce bruciato. verde muschio opaco</span><span>POP / noce italiano. bianco opaco</span><span>POP / noce italiano. grafite opaco</span><span>POP / noce bruciato. corda opaco</span><span>POP / visone opaco. marmo oro</span><span>POP / rovere corteccia. tortora lucido</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-pop.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20POP.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-star.html">
+        <img src="assets/soft-comfort-cucine-moderne-star-cover.jpg" alt="STAR" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>STAR</h2>
+        <h3>Una cucina di design e funzionale</h3>
+        <p>Cucina di design Star, l&#039;eleganza della gola, la praticità della maniglia integrata. Soft Comfort mixa con Star tutti gli ingredienti per una cucina di successo: texture innovative, colori glamour, layout funzionali e di design.</p>
+        <div class="finish-list">
+          <span>STAR / corda opaco e naturale tavolato</span><span>STAR / pietra terra e grafite opaco</span><span>STAR / corda tavolato e verde muschio opaco</span><span>STAR / pietra grigia e naturale tavolato</span><span>STAR / seta bianco opaco e legno bruciato</span><span>pietra grigia e naturale tavolato</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-star.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20STAR.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-stratos.html">
+        <img src="assets/soft-comfort-cucine-moderne-stratos-cover.jpg" alt="STRATOS" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>STRATOS</h2>
+        <h3>STRATOS è resistenza, design, funzionalità e sostenibilità</h3>
+        <p>La cucina contemporanea Stratos è la nostra linea luxury, progettata seguendo le evoluzioni della cultura contemporanea.</p>
+        <div class="finish-list">
+          <span>STRATOS / gres calcite nera, gres light grey</span><span>STRATOS / gres pure white, glass piombo opaco</span><span>STRATOS / hpl grey ostuni, hpl noce</span><span>STRATOS / gres white marble, gres grey</span><span>STRATOS / glass tortora opaco, glass blu oceano opaco, glass senape opaco</span><span>STRATOS / gres terra, glass marrone opaco</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-stratos.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20STRATOS.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    <article class="product-card">
+      <a class="product-media" href="details/cucine-moderne-zante.html">
+        <img src="assets/soft-comfort-cucine-moderne-zante-cover.jpg" alt="ZANTE" loading="lazy">
+        <span>Collezione Soft Comfort</span>
+      </a>
+      <div class="product-body">
+        <p class="product-category">Cucine moderne</p>
+        <h2>ZANTE</h2>
+        <h3>Soft Comfort introduce con ZANTE texture e cromatismi, ispirati alla natura.</h3>
+        <p>Una cucina funzionale. Perfetta e rigorosa nelle sue forme, ZANTE incanta con la sua particolare sagomatura inclinata dell’anta. Le finiture legno, stone e tinta unita possono essere mixate per creare ambienti suggestivi.</p>
+        <div class="finish-list">
+          <span>Finitura legno - Disponibili i top in laminato in tinta anta</span><span>Finitura cemento</span>
+        </div>
+        <a class="product-detail-link" href="details/cucine-moderne-zante.html">Guarda dettagli e gallery</a>
+        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20ZANTE.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
+      </div>
+    </article>
+  
+    </div>
+  </section>
+
+  </main>
+  <script>
+    (function() {
+      const savedScroll = sessionStorage.getItem('catalogScrollPosition');
+      if (savedScroll) {
+        window.scrollTo(0, parseInt(savedScroll, 10));
+        sessionStorage.removeItem('catalogScrollPosition');
+      }
+    })();
+  </script>
+</body>
+</html>
