@@ -1686,11 +1686,20 @@ h1 {
     display: grid;
     min-width: 0;
     padding: 8px;
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transform: translateY(-6px);
     background: rgba(255, 255, 255, 0.045);
     box-shadow: none;
+  }
+
+  .site-header.menu-open .nav-dropdown.is-open .nav-dropdown-menu {
+    opacity: 1;
+    max-height: 240px;
+    pointer-events: auto;
+    transform: none;
   }
 
   .site-header.menu-open .main-nav a,

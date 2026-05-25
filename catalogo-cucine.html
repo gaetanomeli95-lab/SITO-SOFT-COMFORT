@@ -36,14 +36,22 @@
       overflow-x: hidden;
     }
 
+
+
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      z-index: -2;
-      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 20vh / min(760px, 92vw) auto no-repeat;
-      opacity: 0.13;
-      filter: grayscale(0.1) blur(0.4px) saturate(0.82);
+      z-index: 0;
+      background:
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png') left -120px top 130px / min(620px, 42vw) auto no-repeat,
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png') right -120px top 130px / min(620px, 42vw) auto no-repeat,
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 58% / min(1040px, 105vw) auto no-repeat,
+        radial-gradient(circle at 18% 36%, rgba(242, 15, 31, 0.34), transparent 28%),
+        radial-gradient(circle at 82% 36%, rgba(217, 168, 88, 0.24), transparent 30%),
+        radial-gradient(circle at 50% 58%, rgba(242, 15, 31, 0.22), transparent 36%);
+      opacity: 0.48;
+      filter: drop-shadow(0 0 38px rgba(242, 15, 31, 0.42)) drop-shadow(0 0 72px rgba(217, 168, 88, 0.18));
       pointer-events: none;
     }
 
@@ -51,11 +59,33 @@
       content: '';
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.62) 48%, rgba(5, 5, 5, 0.92)),
-        radial-gradient(circle at 50% 22%, transparent 0, rgba(5, 5, 5, 0.6) 48%, rgba(5, 5, 5, 0.92) 100%);
+        linear-gradient(90deg, rgba(5, 5, 5, 0.48), rgba(5, 5, 5, 0.1) 18%, rgba(5, 5, 5, 0.24) 50%, rgba(5, 5, 5, 0.1) 82%, rgba(5, 5, 5, 0.48)),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.42), rgba(5, 5, 5, 0.08) 45%, rgba(5, 5, 5, 0.62));
       pointer-events: none;
+    }
+
+    main,
+    .catalog-sticky-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-hero,
+    .category-section {
+      background-color: rgba(8, 7, 7, 0.72);
+      backdrop-filter: blur(5px);
+    }
+
+    @media (max-width: 700px) {
+      body::before {
+        background:
+          radial-gradient(circle at 50% 48%, rgba(242, 15, 31, 0.22), transparent 34%),
+          radial-gradient(circle at 50% 48%, rgba(217, 168, 88, 0.16), transparent 44%),
+          url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 48% / 132vw auto no-repeat;
+        opacity: 0.3;
+      }
     }
 
     main {
@@ -75,7 +105,6 @@
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(10, 8, 8, 0.88), rgba(10, 8, 8, 0.54)),
-        url('catalogo-assets/soft-comfort-cucine-moderne-diamante-cover.webp') right center / min(560px, 54vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
         radial-gradient(circle at 82% 24%, rgba(217, 168, 88, 0.18), transparent 36%),
         radial-gradient(circle at 12% 90%, rgba(242, 15, 31, 0.18), transparent 36%);
@@ -167,7 +196,6 @@
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(8, 7, 7, 0.92), rgba(8, 7, 7, 0.72)),
-        url('catalogo-assets/soft-comfort-cucine-classiche-aisha-cover.webp') right 18% / min(420px, 46vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
         radial-gradient(circle at 92% 12%, rgba(217, 168, 88, 0.12), transparent 32%);
       box-shadow: 0 28px 100px rgba(0, 0, 0, 0.24);
@@ -176,7 +204,6 @@
     .category-section:nth-of-type(odd) {
       background:
         linear-gradient(135deg, rgba(8, 7, 7, 0.92), rgba(8, 7, 7, 0.72)),
-        url('catalogo-assets/soft-comfort-cucine-moderne-star-cover.webp') right 18% / min(420px, 46vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
         radial-gradient(circle at 12% 18%, rgba(242, 15, 31, 0.13), transparent 34%),
         radial-gradient(circle at 88% 88%, rgba(217, 168, 88, 0.1), transparent 32%);
@@ -429,6 +456,123 @@
       transform: none;
     }
 
+
+    .catalog-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(5, 5, 5, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .catalog-sticky-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: min(1180px, calc(100% - 36px));
+      min-height: 74px;
+      margin: 0 auto;
+    }
+
+    .catalog-sticky-brand,
+    .catalog-sticky-nav a,
+    .catalog-sticky-cta {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .catalog-sticky-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .catalog-sticky-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .catalog-sticky-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .catalog-sticky-nav a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: rgba(248, 244, 238, 0.78);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    .catalog-sticky-nav a:hover,
+    .catalog-sticky-nav a.is-active {
+      color: #fff;
+      background: rgba(242, 15, 31, 0.22);
+    }
+
+    .catalog-sticky-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      box-shadow: 0 14px 34px rgba(242, 15, 31, 0.28);
+      font-size: 0.78rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .catalog-sticky-inner {
+        width: calc(100% - 22px);
+        min-height: 66px;
+        gap: 10px;
+      }
+
+      .catalog-sticky-brand span {
+        display: none;
+      }
+
+      .catalog-sticky-nav {
+        justify-content: flex-start;
+        gap: 4px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+      }
+
+      .catalog-sticky-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .catalog-sticky-nav a {
+        padding: 9px 10px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+      }
+
+      .catalog-sticky-cta {
+        display: none;
+      }
+    }
+
     @media (max-width: 900px) {
       main { width: min(100% - 28px, 560px); padding: 46px 0; }
       .catalog-topline { align-items: start; flex-direction: column; }
@@ -457,6 +601,22 @@
   </style>
 </head>
 <body>
+
+  <header class="catalog-sticky-header">
+    <div class="catalog-sticky-inner">
+      <a class="catalog-sticky-brand" href="index.html" aria-label="Torna alla home Soft Comfort">
+        <img src="ChatGPT Image 14 mag 2026, 18_40_10.png" alt="Logo Soft Comfort">
+        <span>Soft Comfort</span>
+      </a>
+      <nav class="catalog-sticky-nav" aria-label="Navigazione cataloghi">
+        <a href="index.html">Home</a>
+        <a href="catalogo-cucine.html" data-catalog-nav="cucine" class="is-active">Cucine</a>
+        <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette">Camerette</a>
+        <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere">Camere da letto</a>
+      </nav>
+      <a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20personalizzata." target="_blank" rel="noopener">Consulenza</a>
+    </div>
+  </header>
   <main>
     <div class="catalog-topline">
       <a class="catalog-back" href="index.html">← Torna al sito</a>

@@ -8,6 +8,8 @@ const appointmentEmailButton = document.querySelector('[data-appointment-email]'
 const locationCards = document.querySelectorAll('.location-card[role="link"]');
 const catalogLinks = document.querySelectorAll('[data-catalog-link]');
 const siteLoader = document.querySelector('.site-loader');
+const navDropdown = document.querySelector('.nav-dropdown');
+const navDropdownTrigger = document.querySelector('.nav-dropdown-trigger');
 
 const revealPage = () => {
   document.body.classList.add('is-loaded');
@@ -30,11 +32,20 @@ if (document.readyState === 'loading') {
 menuToggle?.addEventListener('click', () => {
   const isOpen = header.classList.toggle('menu-open');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
+  if (!isOpen) navDropdown?.classList.remove('is-open');
+});
+
+navDropdownTrigger?.addEventListener('click', (event) => {
+  if (!header?.classList.contains('menu-open')) return;
+  event.preventDefault();
+  navDropdown?.classList.toggle('is-open');
 });
 
 document.querySelectorAll('.main-nav a').forEach((link) => {
   link.addEventListener('click', () => {
+    if (link.classList.contains('nav-dropdown-trigger') && header?.classList.contains('menu-open')) return;
     header.classList.remove('menu-open');
+    navDropdown?.classList.remove('is-open');
     menuToggle?.setAttribute('aria-expanded', 'false');
   });
 });

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catalogo Camere e Camerette Soft Comfort</title>
+  <title>Catalogo Camerette Soft Comfort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -36,14 +36,19 @@
       overflow-x: hidden;
     }
 
+
+
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      z-index: -2;
-      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 20vh / min(760px, 92vw) auto no-repeat;
-      opacity: 0.13;
-      filter: grayscale(0.1) blur(0.4px) saturate(0.82);
+      z-index: 0;
+      background:
+        radial-gradient(circle at 50% 54%, rgba(242, 15, 31, 0.24), transparent 32%),
+        radial-gradient(circle at 50% 54%, rgba(217, 168, 88, 0.18), transparent 42%),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 54% / min(980px, 112vw) auto no-repeat;
+      opacity: 0.34;
+      filter: drop-shadow(0 0 38px rgba(242, 15, 31, 0.42)) drop-shadow(0 0 72px rgba(217, 168, 88, 0.18));
       pointer-events: none;
     }
 
@@ -51,11 +56,33 @@
       content: '';
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.62) 48%, rgba(5, 5, 5, 0.92)),
-        radial-gradient(circle at 50% 22%, transparent 0, rgba(5, 5, 5, 0.6) 48%, rgba(5, 5, 5, 0.92) 100%);
+        linear-gradient(90deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.9)),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.72));
       pointer-events: none;
+    }
+
+    main,
+    .catalog-sticky-header {
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-hero,
+    .category-section {
+      background-color: rgba(8, 7, 7, 0.72);
+      backdrop-filter: blur(5px);
+    }
+
+    @media (max-width: 700px) {
+      body::before {
+        background:
+          radial-gradient(circle at 50% 48%, rgba(242, 15, 31, 0.22), transparent 34%),
+          radial-gradient(circle at 50% 48%, rgba(217, 168, 88, 0.16), transparent 44%),
+          url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 48% / 132vw auto no-repeat;
+        opacity: 0.3;
+      }
     }
 
     main {
@@ -75,25 +102,12 @@
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(10, 8, 8, 0.88), rgba(10, 8, 8, 0.54)),
-        url('catalogo-assets/soft-comfort-camerette-omnia-6-13-cover.webp') right center / min(560px, 54vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
         radial-gradient(circle at 82% 24%, rgba(217, 168, 88, 0.18), transparent 36%),
         radial-gradient(circle at 12% 90%, rgba(242, 15, 31, 0.18), transparent 36%);
       box-shadow: 0 30px 110px rgba(0, 0, 0, 0.25);
     }
 
-    .preview-hero::after {
-      content: '';
-      position: absolute;
-      right: -80px;
-      bottom: -110px;
-      width: min(420px, 72vw);
-      aspect-ratio: 1;
-      background: url('ChatGPT Image 14 mag 2026, 18_40_10.png') center / contain no-repeat;
-      opacity: 0.045;
-      filter: grayscale(0.25) blur(0.2px);
-      pointer-events: none;
-    }
 
     .catalog-topline {
       display: flex;
@@ -149,6 +163,30 @@
       line-height: 1.8;
     }
 
+    .catalog-shortcuts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .catalog-shortcuts a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 16px;
+      border: 1px solid rgba(217, 168, 88, 0.42);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(242, 15, 31, 0.22);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
     .catalog-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -167,7 +205,6 @@
       overflow: hidden;
       background:
         linear-gradient(135deg, rgba(8, 7, 7, 0.92), rgba(8, 7, 7, 0.72)),
-        url('catalogo-assets/soft-comfort-camerette-block-bk01-cover.webp') right 18% / min(420px, 46vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
         radial-gradient(circle at 92% 12%, rgba(217, 168, 88, 0.12), transparent 32%);
       box-shadow: 0 28px 100px rgba(0, 0, 0, 0.24);
@@ -176,7 +213,6 @@
     .category-section:nth-of-type(odd) {
       background:
         linear-gradient(135deg, rgba(8, 7, 7, 0.92), rgba(8, 7, 7, 0.72)),
-        url('catalogo-assets/soft-comfort-camerette-afrodite-af01-cover.webp') right 18% / min(420px, 46vw) auto no-repeat,
         linear-gradient(135deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.02)),
         radial-gradient(circle at 12% 18%, rgba(242, 15, 31, 0.13), transparent 34%),
         radial-gradient(circle at 88% 88%, rgba(217, 168, 88, 0.1), transparent 32%);
@@ -429,6 +465,123 @@
       transform: none;
     }
 
+
+    .catalog-sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(5, 5, 5, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .catalog-sticky-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      width: min(1180px, calc(100% - 36px));
+      min-height: 74px;
+      margin: 0 auto;
+    }
+
+    .catalog-sticky-brand,
+    .catalog-sticky-nav a,
+    .catalog-sticky-cta {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .catalog-sticky-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .catalog-sticky-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .catalog-sticky-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .catalog-sticky-nav a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: rgba(248, 244, 238, 0.78);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    .catalog-sticky-nav a:hover,
+    .catalog-sticky-nav a.is-active {
+      color: #fff;
+      background: rgba(242, 15, 31, 0.22);
+    }
+
+    .catalog-sticky-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      box-shadow: 0 14px 34px rgba(242, 15, 31, 0.28);
+      font-size: 0.78rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .catalog-sticky-inner {
+        width: calc(100% - 22px);
+        min-height: 66px;
+        gap: 10px;
+      }
+
+      .catalog-sticky-brand span {
+        display: none;
+      }
+
+      .catalog-sticky-nav {
+        justify-content: flex-start;
+        gap: 4px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+      }
+
+      .catalog-sticky-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .catalog-sticky-nav a {
+        padding: 9px 10px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+      }
+
+      .catalog-sticky-cta {
+        display: none;
+      }
+    }
+
     @media (max-width: 900px) {
       main { width: min(100% - 28px, 560px); padding: 46px 0; }
       .catalog-topline { align-items: start; flex-direction: column; }
@@ -457,14 +610,34 @@
   </style>
 </head>
 <body>
+
+  <header class="catalog-sticky-header">
+    <div class="catalog-sticky-inner">
+      <a class="catalog-sticky-brand" href="index.html" aria-label="Torna alla home Soft Comfort">
+        <img src="ChatGPT Image 14 mag 2026, 18_40_10.png" alt="Logo Soft Comfort">
+        <span>Soft Comfort</span>
+      </a>
+      <nav class="catalog-sticky-nav" aria-label="Navigazione cataloghi">
+        <a href="index.html">Home</a>
+        <a href="catalogo-cucine.html" data-catalog-nav="cucine">Cucine</a>
+        <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette" class="is-active">Camerette</a>
+        <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere">Camere da letto</a>
+      </nav>
+      <a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20personalizzata." target="_blank" rel="noopener">Consulenza</a>
+    </div>
+  </header>
   <main>
     <div class="catalog-topline">
       <a class="catalog-back" href="index.html">← Torna al sito</a>
     </div>
     <section class="preview-hero">
       <span class="eyebrow">Preview catalogo</span>
-      <h1>Camere e camerette Soft Comfort</h1>
-      <p>Una selezione di camere e camerette pensata per accompagnare il cliente dalla prima ispirazione alla consulenza in showroom. Nessun prezzo online: ogni proposta viene progettata su misura da Soft Comfort.</p>
+      <h1>Camerette Soft Comfort</h1>
+      <p>Camerette moderne e classiche per accompagnare la crescita con soluzioni funzionali, componibili e progettate su misura.</p>
+      <div class="catalog-shortcuts" aria-label="Vai alle categorie">
+        <a href="#camerette-moderne">Camerette moderne</a>
+        <a href="#camerette-classiche">Camerette classiche</a>
+      </div>
     </section>
     
   <section class="category-section" id="camerette-moderne" data-catalog-section data-current-page="1">
@@ -1421,395 +1594,6 @@
         <button type="button" data-page-next>Successiva</button>
       </nav>
       </section>
-  <section class="category-section" id="camere-da-letto" data-catalog-section data-current-page="1">
-    <div class="category-heading">
-      <div>
-        <p>24 modelli selezionati</p>
-        <h2>Camere da letto</h2>
-      </div>
-      
-        <div class="catalog-page-status" aria-live="polite">
-          Pagina <span data-current-page-label>1</span> di 2
-        </div>
-      
-    </div>
-    <div class="catalog-grid">
-      
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-elba.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-elba-cover.webp" alt="Le Isole - Camera Elba" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Le Isole - Camera Elba</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-le-isole-camera-elba.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Le%20Isole%20-%20Camera%20Elba.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-linosa.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-linosa-cover.webp" alt="Le Isole - Camera Linosa" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Le Isole - Camera Linosa</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-le-isole-camera-linosa.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Le%20Isole%20-%20Camera%20Linosa.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-lipari.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-lipari-cover.webp" alt="Le Isole - Camera Lipari" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Le Isole - Camera Lipari</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-le-isole-camera-lipari.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Le%20Isole%20-%20Camera%20Lipari.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-pianosa.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-pianosa-cover.webp" alt="Le Isole - Camera Pianosa" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Le Isole - Camera Pianosa</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-le-isole-camera-pianosa.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Le%20Isole%20-%20Camera%20Pianosa.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-ponza.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-ponza-cover.webp" alt="Le Isole - Camera Ponza" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Le Isole - Camera Ponza</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-le-isole-camera-ponza.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Le%20Isole%20-%20Camera%20Ponza.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly01.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly01-cover.webp" alt="Lyra LY01" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY01</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly01.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY01.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly02.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly02-cover.webp" alt="Lyra LY02" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY02</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly02.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY02.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly03.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly03-cover.webp" alt="Lyra LY03" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY03</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly03.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY03.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly04.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly04-cover.webp" alt="Lyra LY04" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY04</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly04.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY04.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly05.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly05-cover.webp" alt="Lyra LY05" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY05</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly05.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY05.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly06.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly06-cover.webp" alt="Lyra LY06" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY06</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly06.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY06.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="1">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly07.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly07-cover.webp" alt="Lyra LY07" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY07</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly07.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY07.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly08.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly08-cover.webp" alt="Lyra LY08" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY08</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly08.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY08.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly09.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly09-cover.webp" alt="Lyra LY09" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY09</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly09.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY09.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly10.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly10-cover.webp" alt="Lyra LY10" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY10</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly10.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY10.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly11.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly11-cover.webp" alt="Lyra LY11" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY11</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly11.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY11.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly12.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly12-cover.webp" alt="Lyra LY12" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY12</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly12.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY12.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly13.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly13-cover.webp" alt="Lyra LY13" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY13</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly13.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY13.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly14.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly14-cover.webp" alt="Lyra LY14" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY14</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly14.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY14.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly15.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly15-cover.webp" alt="Lyra LY15" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY15</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly15.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY15.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly16.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly16-cover.webp" alt="Lyra LY16" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY16</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly16.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY16.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly17.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly17-cover.webp" alt="Lyra LY17" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY17</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly17.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY17.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly18.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly18-cover.webp" alt="Lyra LY18" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY18</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly18.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY18.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-page="2">
-      <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly19.html">
-        <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly19-cover.webp" alt="Lyra LY19" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camere da letto</p>
-        <h2>Lyra LY19</h2>
-        
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camere-da-letto-lyra-ly19.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Lyra%20LY19.%20Categoria%3A%20Camere%20da%20letto." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    </div>
-    
-      <nav class="catalog-pagination" aria-label="Paginazione Camere da letto">
-        <button type="button" data-page-prev>Precedente</button>
-        <div class="catalog-page-numbers">
-          
-            <button type="button" data-page-target="1" class="is-active">1</button>
-          
-            <button type="button" data-page-target="2" class="">2</button>
-          
-        </div>
-        <button type="button" data-page-next>Successiva</button>
-      </nav>
-    
-  </section>
 
   </main>
   <script>

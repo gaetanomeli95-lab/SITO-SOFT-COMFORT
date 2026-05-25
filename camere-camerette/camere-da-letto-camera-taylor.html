@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Taylor | Soft Comfort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#050505; --red:#f20f1f; --red-dark:#a90914; --gold:#d9a858; --text:#f8f4ee; --muted:rgba(248,244,238,.68); --line:rgba(255,255,255,.12); --font-body:'Inter',sans-serif; --font-display:'Playfair Display',serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; color:var(--text); font-family:var(--font-body); background:radial-gradient(circle at 15% 0%, rgba(217,168,88,.16), transparent 28%), radial-gradient(circle at 86% 8%, rgba(242,15,31,.12), transparent 30%), linear-gradient(180deg,#120808 0%,#070707 42%,#030303 100%); }
+    a { color:inherit; }
+    .detail-shell { width:min(1220px, calc(100% - 36px)); margin:0 auto; padding:34px 0 70px; }
+    .back-link { display:inline-flex; align-items:center; gap:10px; margin-bottom:28px; color:var(--gold); font-size:.82rem; font-weight:900; letter-spacing:.12em; text-decoration:none; text-transform:uppercase; }
+    .detail-hero { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr); gap:28px; align-items:stretch; }
+    .hero-image { position:relative; min-height:620px; overflow:hidden; border:1px solid var(--line); border-radius:34px; background:#141414; box-shadow:0 34px 110px rgba(0,0,0,.42); }
+    .hero-image img { width:100%; height:100%; object-fit:cover; }
+    .hero-image span { position:absolute; left:20px; top:20px; padding:9px 13px; border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(0,0,0,.45); backdrop-filter:blur(14px); font-size:.72rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
+    .detail-copy, .gallery-section, .detail-info { border:1px solid var(--line); border-radius:34px; background:linear-gradient(180deg, rgba(255,255,255,.072), rgba(255,255,255,.035)); backdrop-filter:blur(18px); }
+    .detail-copy { display:grid; align-content:center; gap:18px; padding:34px; }
+    .category { margin:0; color:var(--gold); font-size:.74rem; font-weight:900; letter-spacing:.18em; text-transform:uppercase; }
+    h1 { margin:0; font-family:var(--font-display); font-size:clamp(3.4rem,8vw,7.4rem); line-height:.86; letter-spacing:-.07em; }
+    h2 { margin:0; color:rgba(255,255,255,.8); font-size:1.12rem; line-height:1.5; }
+    .description { margin:0; color:var(--muted); font-size:1rem; line-height:1.85; }
+    .detail-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:6px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 20px; border-radius:999px; color:#fff; background:linear-gradient(135deg,var(--red),var(--red-dark)); box-shadow:0 16px 38px rgba(242,15,31,.28); font-weight:900; text-decoration:none; }
+    .btn-secondary { border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); box-shadow:none; }
+    .gallery-section, .detail-info { margin-top:28px; padding:28px; }
+    .section-title { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px; }
+    .section-title p { margin:0; color:var(--gold); font-size:.72rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+    .section-title h2 { margin:0; font-family:var(--font-display); font-size:clamp(2rem,4vw,4rem); line-height:.95; letter-spacing:-.055em; }
+    .gallery-viewer { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr); gap:16px; align-items:stretch; }
+    .gallery-main { min-height:520px; overflow:hidden; border:1px solid rgba(255,255,255,.12); border-radius:28px; background:#111; }
+    .gallery-main img { width:100%; height:100%; object-fit:cover; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; align-content:start; }
+    .gallery-grid button { display:block; aspect-ratio:4/3; width:100%; padding:0; overflow:hidden; border:1px solid rgba(255,255,255,.1); border-radius:18px; background:#141414; cursor:pointer; }
+    .gallery-grid img { width:100%; height:100%; object-fit:cover; }
+    .detail-info p { margin:0; color:var(--muted); line-height:1.8; }
+    @media (max-width:900px) { .detail-hero, .gallery-viewer { grid-template-columns:1fr; } .hero-image, .gallery-main { min-height:420px; } .detail-copy { padding:24px; } }
+  </style>
+</head>
+<body>
+  <main class="detail-shell">
+    <a class="back-link" href="../catalogo-camere-camerette.html#camere-contemporanee">← Torna al catalogo</a>
+    <section class="detail-hero">
+      <div class="hero-image">
+        <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-taylor-cover.jpg" alt="Camera Taylor">
+        <span>Soft Comfort</span>
+      </div>
+      <div class="detail-copy">
+        <p class="category">Camere contemporanee</p>
+        <h1>Camera Taylor</h1>
+        <h2>DESIGN SOFISTICATO</h2>
+        <p class="description">Taylor si distingue per la raffinatezza moderna. Il legno con dettaglio rigato si abbina perfettamente ai dettagli dorati, creando un’atmosfera esclusiva e luminosa. Un design nel quale la ricercatezza dei materiali incontra l’eleganza delle finiture.</p>
+        <div class="detail-actions">
+          <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Camera%20Taylor.%20Categoria%3A%20Camere%20contemporanee." target="_blank" rel="noopener">Richiedi informazioni</a>
+          <a class="btn btn-secondary" href="../catalogo-camere-camerette.html#camere-contemporanee">Torna al catalogo</a>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-section">
+      <div class="section-title"><div><p>Gallery</p><h2>Dettagli e finiture</h2></div></div>
+      <div class="gallery-viewer">
+        <div class="gallery-main"><img data-gallery-main src="../catalogo-assets/soft-comfort-camere-da-letto-camera-taylor-cover.jpg" alt="Camera Taylor gallery"></div>
+        <div class="gallery-grid">
+          <button type="button" data-gallery-thumb="catalogo-assets/soft-comfort-camere-da-letto-camera-taylor-cover.jpg" class="is-active">
+            <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-taylor-cover.jpg" alt="Camera Taylor immagine 1" loading="lazy">
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="detail-info"><p>Taylor si distingue per la raffinatezza moderna. Il legno con dettaglio rigato si abbina perfettamente ai dettagli dorati, creando un’atmosfera esclusiva e luminosa. Un design nel quale la ricercatezza dei materiali incontra l’eleganza delle finiture.</p></section>
+  </main>
+  <script>
+    const main = document.querySelector('[data-gallery-main]');
+    document.querySelectorAll('[data-gallery-thumb]').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('[data-gallery-thumb]').forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        main.src = button.dataset.galleryThumb.replace('catalogo-assets/', '../catalogo-assets/');
+      });
+    });
+  </script>
+</body>
+</html>
