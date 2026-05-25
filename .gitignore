@@ -1,4 +1,5 @@
 scraper/node_modules/
+scraper/
 scraper/.cache/
 scraper/playwright-report/
 scraper/test-results/
