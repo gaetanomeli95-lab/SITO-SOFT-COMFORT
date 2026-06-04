@@ -309,7 +309,7 @@
 </head>
 <body>
   <main class="detail-shell">
-    <a class="back-link" href="../catalogo-cucine.html">← Torna al catalogo</a>
+    <a class="back-link" href="../catalogo-cucine.html#product-cucine-moderne-gaia-pet">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
         <img src="../catalogo-assets/soft-comfort-cucine-moderne-gaia-pet-01.webp" alt="GAIA PET">
@@ -322,7 +322,7 @@
         <p class="description">La cucina GAIA è anche in PET, una scelta green per un design elegante, pratico e di qualità, disponibile con anta liscia o a telaio, con maniglia oppure con gola. Il PET è un materiale riciclabile al 100%, totalmente privo di sostanze tossiche. Igienico e resistente ai graffi, si caratterizza anche per la superficie brillante e senza aloni.</p>
         <div class="detail-actions">
           <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20GAIA%20PET.%20Categoria%3A%20Cucine%20moderne." target="_blank" rel="noopener">Richiedi consulenza WhatsApp</a>
-          <a class="btn btn-secondary" href="../catalogo-cucine.html">Vedi altre cucine</a>
+          <a class="btn btn-secondary" href="../catalogo-cucine.html#product-cucine-moderne-gaia-pet">Vedi altre cucine</a>
         </div>
       </div>
     </section>
@@ -415,11 +415,9 @@
     });
 
     (function() {
-      const backLink = document.querySelector('.back-link');
-      if (!backLink) return;
-
-      backLink.addEventListener('click', () => {
-        sessionStorage.setItem('catalogScrollPosition', window.scrollY);
+      const returnTarget = 'product-cucine-moderne-gaia-pet';
+      document.querySelectorAll('.back-link, .btn-secondary').forEach((link) => {
+        link.addEventListener('click', () => sessionStorage.setItem('catalogReturnTarget', returnTarget));
       });
     })();
   </script>
