@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -43,12 +43,18 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background:
-        radial-gradient(circle at 50% 54%, rgba(242, 15, 31, 0.24), transparent 32%),
-        radial-gradient(circle at 50% 54%, rgba(217, 168, 88, 0.18), transparent 42%),
-        url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 54% / min(980px, 112vw) auto no-repeat;
-      opacity: 0.34;
-      filter: drop-shadow(0 0 38px rgba(242, 15, 31, 0.42)) drop-shadow(0 0 72px rgba(217, 168, 88, 0.18));
+      background-image:
+        radial-gradient(circle at 50% 56%, rgba(242, 15, 31, 0.24), transparent 30%),
+        radial-gradient(circle at 16% 72%, rgba(217, 168, 88, 0.16), transparent 34%),
+        radial-gradient(circle at 86% 28%, rgba(242, 15, 31, 0.16), transparent 32%),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+      background-position: center, left bottom, right top, center 58%, right -9vw top 22vh, left -10vw bottom 10vh;
+      background-size: auto, auto, auto, min(940px, 88vw) auto, min(560px, 38vw) auto, min(520px, 36vw) auto;
+      background-repeat: no-repeat;
+      opacity: 0.46;
+      filter: drop-shadow(0 0 42px rgba(242, 15, 31, 0.46)) drop-shadow(0 0 82px rgba(217, 168, 88, 0.22));
       pointer-events: none;
     }
 
@@ -58,8 +64,8 @@
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.9)),
-        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.72));
+        linear-gradient(90deg, rgba(5, 5, 5, 0.58), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.58)),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.48));
       pointer-events: none;
     }
 
@@ -71,17 +77,20 @@
 
     .preview-hero,
     .category-section {
-      background-color: rgba(8, 7, 7, 0.72);
+      background-color: rgba(8, 7, 7, 0.58);
       backdrop-filter: blur(5px);
     }
 
     @media (max-width: 700px) {
       body::before {
-        background:
+        background-image:
           radial-gradient(circle at 50% 48%, rgba(242, 15, 31, 0.22), transparent 34%),
           radial-gradient(circle at 50% 48%, rgba(217, 168, 88, 0.16), transparent 44%),
-          url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 48% / 132vw auto no-repeat;
-        opacity: 0.3;
+          url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+        background-position: center 46%;
+        background-size: auto, auto, 136vw auto;
+        background-repeat: no-repeat;
+        opacity: 0.34;
       }
     }
 
@@ -199,6 +208,7 @@
       display: grid;
       gap: 24px;
       margin-top: 64px;
+      scroll-margin-top: 96px;
       padding: 28px;
       border: 1px solid rgba(255, 255, 255, 0.095);
       border-radius: 34px;
@@ -262,6 +272,11 @@
       line-height: 0.92;
       letter-spacing: -0.055em;
       text-align: left;
+    }
+
+    .product-card.is-return-focus {
+      outline: 2px solid rgba(217, 168, 88, 0.78);
+      box-shadow: 0 0 0 7px rgba(217, 168, 88, 0.13), 0 28px 80px rgba(242, 15, 31, 0.18);
     }
 
     .product-card {
@@ -622,6 +637,7 @@
         <a href="catalogo-cucine.html" data-catalog-nav="cucine">Cucine</a>
         <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette" class="is-active">Camerette</a>
         <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere">Camere da letto</a>
+        <a href="catalogo-materassi.html" data-catalog-nav="materassi">Materassi</a>
       </nav>
       <a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20personalizzata." target="_blank" rel="noopener">Consulenza</a>
     </div>
@@ -654,7 +670,7 @@
     </div>
     <div class="catalog-grid">
       
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk01" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk01.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk01-cover.webp" alt="BLOCK BK01" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -669,7 +685,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk02" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk02.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk02-cover.webp" alt="BLOCK BK02" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -684,7 +700,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk03" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk03.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk03-cover.webp" alt="BLOCK BK03" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -699,7 +715,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk04" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk04.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk04-cover.webp" alt="BLOCK BK04" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -714,7 +730,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk05" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk05.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk05-cover.webp" alt="BLOCK BK05" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -729,7 +745,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk06" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk06.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk06-cover.webp" alt="BLOCK BK06" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -744,7 +760,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk07" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk07.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk07-cover.webp" alt="BLOCK BK07" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -759,7 +775,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk08" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk08.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk08-cover.webp" alt="BLOCK BK08" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -774,7 +790,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk09" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk09.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk09-cover.webp" alt="BLOCK BK09" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -789,7 +805,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk10" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk10.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk10-cover.webp" alt="BLOCK BK10" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -804,7 +820,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk11" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk11.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk11-cover.webp" alt="BLOCK BK11" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -819,7 +835,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="1">
+    <article class="product-card" id="product-camerette-block-bk12" data-catalog-item data-category="moderna" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-block-bk12.html">
         <img src="catalogo-assets/soft-comfort-camerette-block-bk12-cover.webp" alt="BLOCK BK12" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -834,7 +850,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-01" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-01.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-01-cover.webp" alt="OMNIA 6.01" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -849,7 +865,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-02" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-02.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-02-cover.webp" alt="OMNIA 6.02" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -864,7 +880,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-03" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-03.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-03-cover.webp" alt="OMNIA 6.03" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -879,7 +895,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-04" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-04.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-04-cover.webp" alt="OMNIA 6.04" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -894,7 +910,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-05" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-05.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-05-cover.webp" alt="OMNIA 6.05" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -909,7 +925,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-06" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-06.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-06-cover.webp" alt="OMNIA 6.06" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -924,7 +940,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-07" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-07.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-07-cover.webp" alt="OMNIA 6.07" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -939,7 +955,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-08" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-08.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-08-cover.webp" alt="OMNIA 6.08" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -954,7 +970,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-09" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-09.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-09-cover.webp" alt="OMNIA 6.09" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -969,7 +985,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-10" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-10.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-10-cover.webp" alt="OMNIA 6.10" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -984,7 +1000,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-11" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-11.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-11-cover.webp" alt="OMNIA 6.11" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -999,7 +1015,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="2">
+    <article class="product-card" id="product-camerette-omnia-6-12" data-catalog-item data-category="moderna" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-12.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-12-cover.webp" alt="OMNIA 6.12" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1014,7 +1030,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-13" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-13.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-13-cover.webp" alt="OMNIA 6.13" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1029,7 +1045,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-14" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-14.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-14-cover.webp" alt="OMNIA 6.14" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1044,7 +1060,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-15" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-15.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-15-cover.webp" alt="OMNIA 6.15" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1059,7 +1075,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-16" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-16.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-16-cover.webp" alt="OMNIA 6.16" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1074,7 +1090,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-17" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-17.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-17-cover.webp" alt="OMNIA 6.17" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1089,7 +1105,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-18" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-18.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-18-cover.webp" alt="OMNIA 6.18" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1104,7 +1120,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-19" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-19.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-19-cover.webp" alt="OMNIA 6.19" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1119,7 +1135,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-20" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-20.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-20-cover.webp" alt="OMNIA 6.20" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1134,7 +1150,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-21" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-21.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-21-cover.webp" alt="OMNIA 6.21" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1149,7 +1165,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-22" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-22.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-22-cover.webp" alt="OMNIA 6.22" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1164,7 +1180,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-23" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-23.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-23-cover.webp" alt="OMNIA 6.23" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1179,7 +1195,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-24" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-24.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-24-cover.webp" alt="OMNIA 6.24" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1194,7 +1210,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="moderna" data-page="3">
+    <article class="product-card" id="product-camerette-omnia-6-25" data-catalog-item data-category="moderna" data-page="3">
       <a class="product-media" href="camere-camerette/camerette-omnia-6-25.html">
         <img src="catalogo-assets/soft-comfort-camerette-omnia-6-25-cover.webp" alt="OMNIA 6.25" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1226,7 +1242,7 @@
   <section class="category-section" id="camerette-classiche" data-catalog-section data-current-page="1">
     <div class="category-heading">
       <div>
-        <p>23 modelli selezionati</p>
+        <p>22 modelli selezionati</p>
         <h2>Camerette classiche</h2>
       </div>
       
@@ -1237,7 +1253,7 @@
     </div>
     <div class="catalog-grid">
       
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af01" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af01.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af01-cover.webp" alt="Afrodite AF01" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1252,7 +1268,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af02" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af02.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af02-cover.webp" alt="Afrodite AF02" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1267,7 +1283,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af03" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af03.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af03-cover.webp" alt="Afrodite AF03" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1282,7 +1298,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af04" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af04.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af04-cover.webp" alt="Afrodite AF04" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1297,7 +1313,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af05" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af05.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af05-cover.webp" alt="Afrodite AF05" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1312,7 +1328,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af06" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af06.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af06-cover.webp" alt="Afrodite AF06" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1327,22 +1343,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
-      <a class="product-media" href="camere-camerette/camerette-afrodite-af07.html">
-        <img src="catalogo-assets/soft-comfort-camerette-afrodite-af07-cover.webp" alt="Afrodite AF07" loading="lazy">
-        <span>Collezione Soft Comfort</span>
-      </a>
-      <div class="product-body">
-        <p class="product-category">Camerette classiche</p>
-        <h2>Afrodite AF07</h2>
-        <h3>Afrodite AF07</h3>
-        <p>Ita Eng Ita</p>
-        <a class="product-detail-link" href="camere-camerette/camerette-afrodite-af07.html">Guarda dettagli e gallery</a>
-        <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Afrodite%20AF07.%20Categoria%3A%20Camerette." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
-      </div>
-    </article>
-  
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af08" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af08.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af08-cover.webp" alt="Afrodite AF08" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1357,7 +1358,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af09" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af09.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af09-cover.webp" alt="Afrodite AF09" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1372,7 +1373,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af10" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af10.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af10-cover.webp" alt="Afrodite AF10" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1387,7 +1388,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af11" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af11.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af11-cover.webp" alt="Afrodite AF11" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1402,7 +1403,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="1">
+    <article class="product-card" id="product-camerette-afrodite-af12" data-catalog-item data-category="classica" data-page="1">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af12.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af12-cover.webp" alt="Afrodite AF12" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1417,7 +1418,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af13" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af13.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af13-cover.webp" alt="Afrodite AF13" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1432,7 +1433,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af14" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af14.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af14-cover.webp" alt="Afrodite AF14" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1447,7 +1448,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af15" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af15.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af15-cover.webp" alt="Afrodite AF15" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1462,7 +1463,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af16" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af16.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af16-cover.webp" alt="Afrodite AF16" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1477,7 +1478,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af17" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af17.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af17-cover.webp" alt="Afrodite AF17" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1492,7 +1493,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af18" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af18.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af18-cover.webp" alt="Afrodite AF18" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1507,7 +1508,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af19" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af19.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af19-cover.webp" alt="Afrodite AF19" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1522,7 +1523,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af20" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af20.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af20-cover.webp" alt="Afrodite AF20" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1537,7 +1538,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af21" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af21.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af21-cover.webp" alt="Afrodite AF21" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1552,7 +1553,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af22" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af22.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af22-cover.webp" alt="Afrodite AF22" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1567,7 +1568,7 @@
       </div>
     </article>
   
-    <article class="product-card" data-catalog-item data-category="classica" data-page="2">
+    <article class="product-card" id="product-camerette-afrodite-af23" data-catalog-item data-category="classica" data-page="2">
       <a class="product-media" href="camere-camerette/camerette-afrodite-af23.html">
         <img src="catalogo-assets/soft-comfort-camerette-afrodite-af23-cover.webp" alt="Afrodite AF23" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1597,13 +1598,11 @@
 
   </main>
   <script>
-    (function() {
-      const savedScroll = sessionStorage.getItem('catalogScrollPosition');
-      if (savedScroll) {
-        window.scrollTo(0, parseInt(savedScroll, 10));
-        sessionStorage.removeItem('catalogScrollPosition');
-      }
-    })();
+    const getReturnTargetId = () => {
+      const fromHash = decodeURIComponent(window.location.hash.replace('#', '') || '');
+      const id = fromHash || sessionStorage.getItem('catalogReturnTarget') || '';
+      return id.startsWith('product-') ? id : '';
+    };
 
     document.querySelectorAll('[data-catalog-section]').forEach((section) => {
       const items = [...section.querySelectorAll('[data-catalog-item]')];
@@ -1640,7 +1639,29 @@
 
       previous?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) - 1, true));
       next?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) + 1, true));
-      setPage(1, false);
+
+      const target = document.getElementById(getReturnTargetId());
+      setPage(target && section.contains(target) ? Number(target.dataset.page || 1) : 1, false);
+    });
+
+    document.querySelectorAll('.product-card[id] .product-media, .product-card[id] .product-detail-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const card = link.closest('.product-card[id]');
+        if (!card) return;
+        sessionStorage.setItem('catalogReturnTarget', card.id);
+        history.replaceState(null, '', `#${card.id}`);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      const target = document.getElementById(getReturnTargetId());
+      if (!target) return;
+      window.setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('is-return-focus');
+        window.setTimeout(() => target.classList.remove('is-return-focus'), 1800);
+        sessionStorage.removeItem('catalogReturnTarget');
+      }, 80);
     });
   </script>
 </body>

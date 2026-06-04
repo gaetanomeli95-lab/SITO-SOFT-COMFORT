@@ -43,7 +43,7 @@
 </head>
 <body>
   <main class="detail-shell">
-    <a class="back-link" href="../catalogo-camere-camerette.html#camere-contemporanee">← Torna al catalogo</a>
+    <a class="back-link" href="../catalogo-camere-da-letto.html#product-camere-da-letto-camera-boheme">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
         <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-boheme-cover.jpg" alt="Camera Bohème">
@@ -56,7 +56,7 @@
         <p class="description">Bohème richiama i canoni della classicità ma guarda alla modernità con geometrie, volumi e forme armoniose. Una scelta calda, vitale e curata nei dettagli.</p>
         <div class="detail-actions">
           <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Camera%20Boh%C3%A8me.%20Categoria%3A%20Camere%20contemporanee." target="_blank" rel="noopener">Richiedi informazioni</a>
-          <a class="btn btn-secondary" href="../catalogo-camere-camerette.html#camere-contemporanee">Torna al catalogo</a>
+          <a class="btn btn-secondary" href="../catalogo-camere-da-letto.html#product-camere-da-letto-camera-boheme">Torna al catalogo</a>
         </div>
       </div>
     </section>
@@ -82,6 +82,13 @@
         main.src = button.dataset.galleryThumb.replace('catalogo-assets/', '../catalogo-assets/');
       });
     });
+  
+    (function() {
+      const returnTarget = 'product-camere-da-letto-camera-boheme';
+      document.querySelectorAll('.back-link, .btn-secondary').forEach((link) => {
+        link.addEventListener('click', () => sessionStorage.setItem('catalogReturnTarget', returnTarget));
+      });
+    })();
   </script>
 </body>
 </html>

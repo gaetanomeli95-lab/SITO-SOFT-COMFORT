@@ -919,6 +919,13 @@ h1 {
   background-position: 68% center;
 }
 
+.collection-mattresses {
+  --collection-image: url("catalogo-assets/soft-comfort-materassi-morfeus-memory-3-strati.jpg");
+  grid-column: span 2;
+  grid-row: span 2;
+  background-position: center;
+}
+
 .collection-living {
   --collection-image: url("ZONA LIVING.png");
   grid-column: span 3;
@@ -1752,6 +1759,7 @@ h1 {
   }
 
   .collection-bedroom,
+  .collection-mattresses,
   .collection-living,
   .collection-chairs {
     grid-column: span 1;
@@ -2017,6 +2025,11 @@ h1 {
   .collection-bedroom {
     min-height: 440px;
     background-position: 34% center;
+  }
+
+  .collection-mattresses {
+    min-height: 420px;
+    background-position: center;
   }
 
   .collection-living {

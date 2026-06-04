@@ -43,7 +43,7 @@
 </head>
 <body>
   <main class="detail-shell">
-    <a class="back-link" href="../catalogo-camere-camerette.html#camere-contemporanee">← Torna al catalogo</a>
+    <a class="back-link" href="../catalogo-camere-da-letto.html#product-camere-da-letto-camera-melody-bianca">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
         <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-cover.jpg" alt="Camera Melody Bianca">
@@ -56,7 +56,7 @@
         <p class="description">Melody Bianca ha un carattere deciso e una cifra stilistica moderna. Un modello dinamico e raffinato, impreziosito da rifiniture curate e dalla purezza luminosa del colore bianco.</p>
         <div class="detail-actions">
           <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Camera%20Melody%20Bianca.%20Categoria%3A%20Camere%20contemporanee." target="_blank" rel="noopener">Richiedi informazioni</a>
-          <a class="btn btn-secondary" href="../catalogo-camere-camerette.html#camere-contemporanee">Torna al catalogo</a>
+          <a class="btn btn-secondary" href="../catalogo-camere-da-letto.html#product-camere-da-letto-camera-melody-bianca">Torna al catalogo</a>
         </div>
       </div>
     </section>
@@ -67,6 +67,12 @@
         <div class="gallery-grid">
           <button type="button" data-gallery-thumb="catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-cover.jpg" class="is-active">
             <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-cover.jpg" alt="Camera Melody Bianca immagine 1" loading="lazy">
+          </button>
+          <button type="button" data-gallery-thumb="catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-gallery-01.jpg">
+            <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-gallery-01.jpg" alt="Camera Melody Bianca immagine 2" loading="lazy">
+          </button>
+          <button type="button" data-gallery-thumb="catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-gallery-02.jpg">
+            <img src="../catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-gallery-02.jpg" alt="Camera Melody Bianca immagine 3" loading="lazy">
           </button>
         </div>
       </div>
@@ -82,6 +88,13 @@
         main.src = button.dataset.galleryThumb.replace('catalogo-assets/', '../catalogo-assets/');
       });
     });
+  
+    (function() {
+      const returnTarget = 'product-camere-da-letto-camera-melody-bianca';
+      document.querySelectorAll('.back-link, .btn-secondary').forEach((link) => {
+        link.addEventListener('click', () => sessionStorage.setItem('catalogReturnTarget', returnTarget));
+      });
+    })();
   </script>
 </body>
 </html>

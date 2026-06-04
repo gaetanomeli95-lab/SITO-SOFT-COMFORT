@@ -43,15 +43,18 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background:
-        url('ChatGPT Image 14 mag 2026, 18_40_10.png') left -120px top 130px / min(620px, 42vw) auto no-repeat,
-        url('ChatGPT Image 14 mag 2026, 18_40_10.png') right -120px top 130px / min(620px, 42vw) auto no-repeat,
-        url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 58% / min(1040px, 105vw) auto no-repeat,
-        radial-gradient(circle at 18% 36%, rgba(242, 15, 31, 0.34), transparent 28%),
-        radial-gradient(circle at 82% 36%, rgba(217, 168, 88, 0.24), transparent 30%),
-        radial-gradient(circle at 50% 58%, rgba(242, 15, 31, 0.22), transparent 36%);
-      opacity: 0.48;
-      filter: drop-shadow(0 0 38px rgba(242, 15, 31, 0.42)) drop-shadow(0 0 72px rgba(217, 168, 88, 0.18));
+      background-image:
+        radial-gradient(circle at 50% 56%, rgba(242, 15, 31, 0.24), transparent 30%),
+        radial-gradient(circle at 16% 72%, rgba(217, 168, 88, 0.16), transparent 34%),
+        radial-gradient(circle at 86% 28%, rgba(242, 15, 31, 0.16), transparent 32%),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+      background-position: center, left bottom, right top, center 58%, right -9vw top 22vh, left -10vw bottom 10vh;
+      background-size: auto, auto, auto, min(940px, 88vw) auto, min(560px, 38vw) auto, min(520px, 36vw) auto;
+      background-repeat: no-repeat;
+      opacity: 0.46;
+      filter: drop-shadow(0 0 42px rgba(242, 15, 31, 0.46)) drop-shadow(0 0 82px rgba(217, 168, 88, 0.22));
       pointer-events: none;
     }
 
@@ -61,8 +64,8 @@
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.48), rgba(5, 5, 5, 0.1) 18%, rgba(5, 5, 5, 0.24) 50%, rgba(5, 5, 5, 0.1) 82%, rgba(5, 5, 5, 0.48)),
-        linear-gradient(180deg, rgba(5, 5, 5, 0.42), rgba(5, 5, 5, 0.08) 45%, rgba(5, 5, 5, 0.62));
+        linear-gradient(90deg, rgba(5, 5, 5, 0.58), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.58)),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.48));
       pointer-events: none;
     }
 
@@ -74,17 +77,20 @@
 
     .preview-hero,
     .category-section {
-      background-color: rgba(8, 7, 7, 0.72);
+      background-color: rgba(8, 7, 7, 0.58);
       backdrop-filter: blur(5px);
     }
 
     @media (max-width: 700px) {
       body::before {
-        background:
+        background-image:
           radial-gradient(circle at 50% 48%, rgba(242, 15, 31, 0.22), transparent 34%),
           radial-gradient(circle at 50% 48%, rgba(217, 168, 88, 0.16), transparent 44%),
-          url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 48% / 132vw auto no-repeat;
-        opacity: 0.3;
+          url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+        background-position: center 46%;
+        background-size: auto, auto, 136vw auto;
+        background-repeat: no-repeat;
+        opacity: 0.34;
       }
     }
 
@@ -613,6 +619,7 @@
         <a href="catalogo-cucine.html" data-catalog-nav="cucine" class="is-active">Cucine</a>
         <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette">Camerette</a>
         <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere">Camere da letto</a>
+        <a href="catalogo-materassi.html" data-catalog-nav="materassi">Materassi</a>
       </nav>
       <a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20personalizzata." target="_blank" rel="noopener">Consulenza</a>
     </div>

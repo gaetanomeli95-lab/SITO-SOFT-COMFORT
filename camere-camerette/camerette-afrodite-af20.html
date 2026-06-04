@@ -309,7 +309,7 @@
 </head>
 <body>
   <main class="detail-shell">
-    <a class="back-link" href="../catalogo-camere-camerette.html">← Torna al catalogo</a>
+    <a class="back-link" href="../catalogo-camere-camerette.html#product-camerette-afrodite-af20">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
         <img src="../catalogo-assets/soft-comfort-camerette-afrodite-af20-01.webp" alt="Afrodite AF20">
@@ -322,7 +322,7 @@
         <p class="description">Ita Eng Ita</p>
         <div class="detail-actions">
           <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Afrodite%20AF20.%20Categoria%3A%20Camerette." target="_blank" rel="noopener">Richiedi consulenza WhatsApp</a>
-          <a class="btn btn-secondary" href="../catalogo-camere-camerette.html">Vedi altre soluzioni</a>
+          <a class="btn btn-secondary" href="../catalogo-camere-camerette.html#product-camerette-afrodite-af20">Vedi altre soluzioni</a>
         </div>
       </div>
     </section>
@@ -391,11 +391,9 @@
     });
 
     (function() {
-      const backLink = document.querySelector('.back-link');
-      if (!backLink) return;
-
-      backLink.addEventListener('click', () => {
-        sessionStorage.setItem('catalogScrollPosition', window.scrollY);
+      const returnTarget = 'product-camerette-afrodite-af20';
+      document.querySelectorAll('.back-link, .btn-secondary').forEach((link) => {
+        link.addEventListener('click', () => sessionStorage.setItem('catalogReturnTarget', returnTarget));
       });
     })();
   </script>

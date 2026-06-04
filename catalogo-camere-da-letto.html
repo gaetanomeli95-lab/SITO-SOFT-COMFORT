@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -43,12 +43,18 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background:
-        radial-gradient(circle at 50% 54%, rgba(242, 15, 31, 0.24), transparent 32%),
-        radial-gradient(circle at 50% 54%, rgba(217, 168, 88, 0.18), transparent 42%),
-        url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 54% / min(980px, 112vw) auto no-repeat;
-      opacity: 0.34;
-      filter: drop-shadow(0 0 38px rgba(242, 15, 31, 0.42)) drop-shadow(0 0 72px rgba(217, 168, 88, 0.18));
+      background-image:
+        radial-gradient(circle at 50% 56%, rgba(242, 15, 31, 0.24), transparent 30%),
+        radial-gradient(circle at 16% 72%, rgba(217, 168, 88, 0.16), transparent 34%),
+        radial-gradient(circle at 86% 28%, rgba(242, 15, 31, 0.16), transparent 32%),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png'),
+        url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+      background-position: center, left bottom, right top, center 58%, right -9vw top 22vh, left -10vw bottom 10vh;
+      background-size: auto, auto, auto, min(940px, 88vw) auto, min(560px, 38vw) auto, min(520px, 36vw) auto;
+      background-repeat: no-repeat;
+      opacity: 0.46;
+      filter: drop-shadow(0 0 42px rgba(242, 15, 31, 0.46)) drop-shadow(0 0 82px rgba(217, 168, 88, 0.22));
       pointer-events: none;
     }
 
@@ -58,8 +64,8 @@
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.9)),
-        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.72));
+        linear-gradient(90deg, rgba(5, 5, 5, 0.58), rgba(5, 5, 5, 0.18) 50%, rgba(5, 5, 5, 0.58)),
+        linear-gradient(180deg, rgba(5, 5, 5, 0.46), rgba(5, 5, 5, 0.16) 45%, rgba(5, 5, 5, 0.48));
       pointer-events: none;
     }
 
@@ -71,17 +77,20 @@
 
     .preview-hero,
     .category-section {
-      background-color: rgba(8, 7, 7, 0.72);
+      background-color: rgba(8, 7, 7, 0.58);
       backdrop-filter: blur(5px);
     }
 
     @media (max-width: 700px) {
       body::before {
-        background:
+        background-image:
           radial-gradient(circle at 50% 48%, rgba(242, 15, 31, 0.22), transparent 34%),
           radial-gradient(circle at 50% 48%, rgba(217, 168, 88, 0.16), transparent 44%),
-          url('ChatGPT Image 14 mag 2026, 18_40_10.png') center 48% / 132vw auto no-repeat;
-        opacity: 0.3;
+          url('ChatGPT Image 14 mag 2026, 18_40_10.png');
+        background-position: center 46%;
+        background-size: auto, auto, 136vw auto;
+        background-repeat: no-repeat;
+        opacity: 0.34;
       }
     }
 
@@ -199,6 +208,7 @@
       display: grid;
       gap: 24px;
       margin-top: 64px;
+      scroll-margin-top: 96px;
       padding: 28px;
       border: 1px solid rgba(255, 255, 255, 0.095);
       border-radius: 34px;
@@ -262,6 +272,11 @@
       line-height: 0.92;
       letter-spacing: -0.055em;
       text-align: left;
+    }
+
+    .product-card.is-return-focus {
+      outline: 2px solid rgba(217, 168, 88, 0.78);
+      box-shadow: 0 0 0 7px rgba(217, 168, 88, 0.13), 0 28px 80px rgba(242, 15, 31, 0.18);
     }
 
     .product-card {
@@ -622,6 +637,7 @@
         <a href="catalogo-cucine.html" data-catalog-nav="cucine">Cucine</a>
         <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette">Camerette</a>
         <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere" class="is-active">Camere da letto</a>
+        <a href="catalogo-materassi.html" data-catalog-nav="materassi">Materassi</a>
       </nav>
       <a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20personalizzata." target="_blank" rel="noopener">Consulenza</a>
     </div>
@@ -635,16 +651,15 @@
       <h1>Camere da letto Soft Comfort</h1>
       <p>Camere da letto classiche, moderne e contemporanee selezionate per creare ambienti eleganti, funzionali e progettati su misura.</p>
       <div class="catalog-shortcuts" aria-label="Vai alle categorie">
-        <a href="#camere-contemporanee">Camere contemporanee</a>
-        <a href="#camere-moderne">Camere moderne</a>
+        <a href="#camere-moderne">Camere moderne e contemporanee</a>
         <a href="#camere-classiche">Camere classiche</a>
       </div>
     </section>
     
-  <section class="category-section" id="camere-contemporanee" data-catalog-section data-current-page="1">
-    <div class="category-heading"><div><p>6 modelli selezionati</p><h2>Camere contemporanee</h2></div><div class="catalog-page-status" aria-live="polite">Pagina <span data-current-page-label>1</span> di 1</div></div>
+  <section class="category-section" id="camere-moderne" data-catalog-section data-current-page="1">
+    <div class="category-heading"><div><p>36 modelli selezionati</p><h2>Camere moderne e contemporanee</h2></div><div class="catalog-page-status" aria-live="polite">Pagina <span data-current-page-label>1</span> di 4</div></div>
     <div class="catalog-grid">
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-taylor" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-taylor.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-taylor-cover.jpg" alt="Camera Taylor" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -658,7 +673,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-marilyn" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-marilyn.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-marilyn-cover.jpg" alt="Camera Marilyn" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -672,7 +687,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-margot" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-margot.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-margot-cover.jpg" alt="Camera Margot" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -686,7 +701,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-elodie" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-elodie.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-elodie-cover.jpg" alt="Camera Elodie" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -700,7 +715,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-melody-grigia" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-melody-grigia.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-melody-grigia-cover.jpg" alt="Camera Melody Grigia" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -714,7 +729,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-melody-bianca" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-melody-bianca.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-melody-bianca-cover.jpg" alt="Camera Melody Bianca" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -727,20 +742,8 @@
         <a class="product-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20Camera%20Melody%20Bianca.%20Categoria%3A%20Camere%20contemporanee.%20Fornitore%3A%20Tutto%20Mobili." target="_blank" rel="noopener">Richiedi informazioni su WhatsApp</a>
       </div>
     </article>
-    </div>
-      <nav class="catalog-pagination" aria-label="Paginazione Camere contemporanee">
-        <button type="button" data-page-prev>Precedente</button>
-        <div class="catalog-page-numbers">
-          <button type="button" data-page-target="1" class="is-active">1</button>
-        </div>
-        <button type="button" data-page-next>Successiva</button>
-      </nav>
-  </section>
 
-  <section class="category-section" id="camere-moderne" data-catalog-section data-current-page="1">
-    <div class="category-heading"><div><p>30 modelli selezionati</p><h2>Camere moderne</h2></div><div class="catalog-page-status" aria-live="polite">Pagina <span data-current-page-label>1</span> di 3</div></div>
-    <div class="catalog-grid">
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-karin" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-karin.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-karin-cover.jpg" alt="Camera Karin" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -754,7 +757,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-iris" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-iris.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-iris-cover.jpg" alt="Camera Iris" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -768,7 +771,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-iris-patinata" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-iris-patinata.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-iris-patinata-cover.jpg" alt="Camera Iris Patinata" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -782,7 +785,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-doris" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-doris.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-doris-cover.jpg" alt="Camera Doris" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -796,7 +799,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-boheme" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-boheme.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-boheme-cover.jpg" alt="Camera Bohème" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -810,7 +813,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-boheme-bianca" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-boheme-bianca.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-boheme-bianca-cover.jpg" alt="Camera Bohème Bianca" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -824,7 +827,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-le-isole-camera-elba" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-elba.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-elba-cover.webp" alt="Le Isole - Camera Elba" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -838,7 +841,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-le-isole-camera-linosa" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-linosa.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-linosa-cover.webp" alt="Le Isole - Camera Linosa" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -852,7 +855,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-le-isole-camera-lipari" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-lipari.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-lipari-cover.webp" alt="Le Isole - Camera Lipari" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -866,7 +869,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-le-isole-camera-pianosa" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-pianosa.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-pianosa-cover.webp" alt="Le Isole - Camera Pianosa" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -880,7 +883,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-le-isole-camera-ponza" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-le-isole-camera-ponza.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-le-isole-camera-ponza-cover.webp" alt="Le Isole - Camera Ponza" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -894,7 +897,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly01" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly01.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly01-cover.webp" alt="Lyra LY01" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -908,7 +911,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly02" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly02.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly02-cover.webp" alt="Lyra LY02" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -922,7 +925,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly03" data-catalog-item data-page="2">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly03.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly03-cover.webp" alt="Lyra LY03" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -936,7 +939,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly04" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly04.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly04-cover.webp" alt="Lyra LY04" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -950,7 +953,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly05" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly05.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly05-cover.webp" alt="Lyra LY05" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -964,7 +967,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly06" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly06.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly06-cover.webp" alt="Lyra LY06" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -978,7 +981,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly07" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly07.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly07-cover.webp" alt="Lyra LY07" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -992,7 +995,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly08" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly08.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly08-cover.webp" alt="Lyra LY08" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1006,7 +1009,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly09" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly09.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly09-cover.webp" alt="Lyra LY09" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1020,7 +1023,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly10" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly10.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly10-cover.webp" alt="Lyra LY10" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1034,7 +1037,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly11" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly11.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly11-cover.webp" alt="Lyra LY11" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1048,7 +1051,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly12" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly12.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly12-cover.webp" alt="Lyra LY12" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1062,7 +1065,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="2">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly13" data-catalog-item data-page="3">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly13.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly13-cover.webp" alt="Lyra LY13" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1076,7 +1079,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly14" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly14.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly14-cover.webp" alt="Lyra LY14" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1090,7 +1093,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly15" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly15.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly15-cover.webp" alt="Lyra LY15" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1104,7 +1107,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly16" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly16.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly16-cover.webp" alt="Lyra LY16" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1118,7 +1121,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly17" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly17.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly17-cover.webp" alt="Lyra LY17" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1132,7 +1135,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly18" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly18.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly18-cover.webp" alt="Lyra LY18" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1146,7 +1149,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="3">
+    <article class="product-card" id="product-camere-da-letto-lyra-ly19" data-catalog-item data-page="4">
       <a class="product-media" href="camere-camerette/camere-da-letto-lyra-ly19.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-lyra-ly19-cover.webp" alt="Lyra LY19" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1160,12 +1163,13 @@
       </div>
     </article>
     </div>
-      <nav class="catalog-pagination" aria-label="Paginazione Camere moderne">
+      <nav class="catalog-pagination" aria-label="Paginazione Camere moderne e contemporanee">
         <button type="button" data-page-prev>Precedente</button>
         <div class="catalog-page-numbers">
           <button type="button" data-page-target="1" class="is-active">1</button>
           <button type="button" data-page-target="2" class="">2</button>
           <button type="button" data-page-target="3" class="">3</button>
+          <button type="button" data-page-target="4" class="">4</button>
         </div>
         <button type="button" data-page-next>Successiva</button>
       </nav>
@@ -1174,7 +1178,7 @@
   <section class="category-section" id="camere-classiche" data-catalog-section data-current-page="1">
     <div class="category-heading"><div><p>9 modelli selezionati</p><h2>Camere classiche</h2></div><div class="catalog-page-status" aria-live="polite">Pagina <span data-current-page-label>1</span> di 1</div></div>
     <div class="catalog-grid">
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-camilla" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-camilla.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-camilla-cover.jpg" alt="Camera Camilla" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1188,7 +1192,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-turandot" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-turandot.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-turandot-cover.jpg" alt="Camera Turandot" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1202,7 +1206,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-angelika" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-angelika.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-angelika-cover.jpg" alt="Camera Angelika" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1216,7 +1220,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-carmen" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-carmen.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-carmen-cover.jpg" alt="Camera Carmen" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1230,7 +1234,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-tosca" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-tosca.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-tosca-cover.jpg" alt="Camera Tosca" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1244,7 +1248,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-compose-jennifer" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-compose-jennifer.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-compose-jennifer-cover.jpg" alt="Composè Jennifer" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1258,7 +1262,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-compose-angelika" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-compose-angelika.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-compose-angelika-cover.jpg" alt="Composè Angelika" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1272,7 +1276,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-compose-raffaello" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-compose-raffaello.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-compose-raffaello-cover.jpg" alt="Composè Raffaello" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1286,7 +1290,7 @@
       </div>
     </article>
 
-    <article class="product-card" data-catalog-item data-page="1">
+    <article class="product-card" id="product-camere-da-letto-camera-nabucco" data-catalog-item data-page="1">
       <a class="product-media" href="camere-camerette/camere-da-letto-camera-nabucco.html">
         <img src="catalogo-assets/soft-comfort-camere-da-letto-camera-nabucco-cover.jpg" alt="Camera Nabucco" loading="lazy">
         <span>Collezione Soft Comfort</span>
@@ -1310,13 +1314,11 @@
   </section>
   </main>
   <script>
-    (function() {
-      const savedScroll = sessionStorage.getItem('catalogScrollPosition');
-      if (savedScroll) {
-        window.scrollTo(0, parseInt(savedScroll, 10));
-        sessionStorage.removeItem('catalogScrollPosition');
-      }
-    })();
+    const getReturnTargetId = () => {
+      const fromHash = decodeURIComponent(window.location.hash.replace('#', '') || '');
+      const id = fromHash || sessionStorage.getItem('catalogReturnTarget') || '';
+      return id.startsWith('product-') ? id : '';
+    };
 
     document.querySelectorAll('[data-catalog-section]').forEach((section) => {
       const items = [...section.querySelectorAll('[data-catalog-item]')];
@@ -1325,36 +1327,43 @@
       const next = section.querySelector('[data-page-next]');
       const label = section.querySelector('[data-current-page-label]');
       const totalPages = Math.max(...items.map((item) => Number(item.dataset.page || 1)));
-
       const setPage = (page, shouldScroll) => {
         const nextPage = Math.min(Math.max(page, 1), totalPages);
         section.dataset.currentPage = String(nextPage);
-
-        items.forEach((item) => {
-          item.hidden = Number(item.dataset.page) !== nextPage;
-        });
-
-        targets.forEach((button) => {
-          button.classList.toggle('is-active', Number(button.dataset.pageTarget) === nextPage);
-        });
-
+        items.forEach((item) => { item.hidden = Number(item.dataset.page) !== nextPage; });
+        targets.forEach((button) => { button.classList.toggle('is-active', Number(button.dataset.pageTarget) === nextPage); });
         if (previous) previous.disabled = nextPage === 1;
         if (next) next.disabled = nextPage === totalPages;
         if (label) label.textContent = String(nextPage);
-
-        if (shouldScroll) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (shouldScroll) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       };
-
-      targets.forEach((button) => {
-        button.addEventListener('click', () => setPage(Number(button.dataset.pageTarget), true));
-      });
-
+      targets.forEach((button) => button.addEventListener('click', () => setPage(Number(button.dataset.pageTarget), true)));
       previous?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) - 1, true));
       next?.addEventListener('click', () => setPage(Number(section.dataset.currentPage || 1) + 1, true));
-      setPage(1, false);
+      const target = document.getElementById(getReturnTargetId());
+      setPage(target && section.contains(target) ? Number(target.dataset.page || 1) : 1, false);
+    });
+
+    document.querySelectorAll('.product-card[id] .product-media, .product-card[id] .product-detail-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const card = link.closest('.product-card[id]');
+        if (!card) return;
+        sessionStorage.setItem('catalogReturnTarget', card.id);
+        history.replaceState(null, '', `#${card.id}`);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      const target = document.getElementById(getReturnTargetId());
+      if (!target) return;
+      window.setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.classList.add('is-return-focus');
+        window.setTimeout(() => target.classList.remove('is-return-focus'), 1800);
+        sessionStorage.removeItem('catalogReturnTarget');
+      }, 80);
     });
   </script>
 </body>
 </html>
+
