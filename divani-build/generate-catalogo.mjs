@@ -29,7 +29,7 @@ const renderCard = (p, page) => {
   return `
     <article class="product-card" id="${id}" data-catalog-item data-page="${page}">
       <a class="product-media" href="divani/${p.slug}.html">
-        <img src="catalogo-assets/${cover}" alt="${p.name}" loading="lazy" style="mix-blend-mode: multiply;">
+        <img src="catalogo-assets/${cover}" alt="${p.name}" loading="lazy">
         <span>Collezione Soft Comfort</span>
       </a>
       <div class="product-body">
