@@ -54,12 +54,12 @@ const renderGallery = (images, slug) => {
       </div>
       <div class="gallery-viewer">
         <div class="gallery-main">
-          <img data-main-gallery-image src="../catalogo-assets/${images[0]}" alt="${slug} selezione gallery">
+          <img data-main-gallery-image src="../catalogo-assets/${images[0]}" alt="${slug} selezione gallery" style="mix-blend-mode: multiply;">
         </div>
         <div class="gallery-grid">`;
   images.forEach((img, i) => {
     html += `\n          <button type="button" data-gallery-image="../catalogo-assets/${img}" ${i === 0 ? 'class="is-active"' : ''} aria-label="${slug} vista ${i + 1}">
-            <img src="../catalogo-assets/${img}" alt="${slug} vista ${i + 1}" loading="lazy">
+            <img src="../catalogo-assets/${img}" alt="${slug} vista ${i + 1}" loading="lazy" style="mix-blend-mode: multiply;">
           </button>`;
   });
   html += '\n        </div>\n      </div>\n    </section>';
@@ -99,7 +99,7 @@ for (const p of DATA) {
       `<a class="back-link" href="../catalogo-divani.html#${id}">← Torna al catalogo divani</a>`)
     .replace(/<div class="hero-image">\s*<img src="[^"]+" alt="TIFFANY">\s*<span>/,
       `<div class="hero-image" style="background: #161616; position: relative; overflow: hidden;">
-        <img src="../catalogo-assets/${cover}" alt="${p.name}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <img src="../catalogo-assets/${cover}" alt="${p.name}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply;">
         <span>`)
     .replace(/<span>Materassi Soft Comfort<\/span>/, '<span>Divani Soft Comfort</span>')
     .replace(/<p class="category">Cucine classiche<\/p>/, '<p class="category">Divani</p>')
