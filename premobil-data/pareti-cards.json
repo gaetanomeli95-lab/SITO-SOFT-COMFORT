@@ -1,0 +1,173 @@
+[
+  {
+    "catSlug": "madie-joker",
+    "catLabel": "Madie Joker",
+    "slug": "joker",
+    "title": "JOKER",
+    "cover": "catalogo-assets/premobil/06-rit.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' MADIE Tradurre un’idea di armonia e bellezza una forma precisa, una realtà concreta e tan...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-a-spalla",
+    "catLabel": "Pareti a spalla",
+    "slug": "foster",
+    "title": "FOSTER",
+    "cover": "catalogo-assets/premobil/COMPOSIZIONE-301.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE A SPALLA COMPONIBILE Tradurre un’idea di armonia e bellezza una forma precisa, una...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "foster-componibili-e-madie",
+    "title": "FOSTER COMPONIBILI E MADIE",
+    "cover": "catalogo-assets/premobil/COMPOSIZIONE-313.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PRODOTTI COMPOSIZIONI COMPONIBILI E MADIE Tradurre un’idea di armonia e bellezza una form...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "merida",
+    "title": "MERIDA",
+    "cover": "catalogo-assets/premobil/MERIDA-002-13.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura bianco frasso, frontali elementi so...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "formentera",
+    "title": "FORMENTERA",
+    "cover": "catalogo-assets/premobil/FORMENTERA-002-11.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura bianco frasso, frontali elementi so...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "tago",
+    "title": "TAGO",
+    "cover": "catalogo-assets/premobil/TAGO-01-35.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura olmo perla, frontali elementi sospe...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "bilbao",
+    "title": "BILBAO",
+    "cover": "catalogo-assets/premobil/BILBAO-02-15.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura bianco frasso, frontali elementi so...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "madrid",
+    "title": "MADRID",
+    "cover": "catalogo-assets/premobil/MADRID-PR.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura bianco frasso, frontali elementi so...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "toledo",
+    "title": "TOLEDO",
+    "cover": "catalogo-assets/premobil/TOLEDO-005-1-57.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura bianco frasso, frontali elementi so...",
+    "dimensions": "60x60, 120x32"
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "nelson",
+    "title": "NELSON",
+    "cover": "catalogo-assets/premobil/NELSON-001-41.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE DUE VERSIONI: 1 - Struttura fitura noce, frontali elementi sospesi fit...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "vigo",
+    "title": "VIGO",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE Struttura fitura noce, frontali elementi sospesi fitura bianco lucido....",
+    "dimensions": "L. 300"
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "cordova",
+    "title": "CORDOVA",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE Struttura fitura bianco frasso, frontali elementi sospesi fitura bianc...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-componibili",
+    "catLabel": "Pareti componibili",
+    "slug": "granada",
+    "title": "GRANADA",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE COMPONIBILE Struttura fitura bianco frasso, frontali elementi sospesi fitura vison...",
+    "dimensions": ""
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "argo",
+    "title": "ARGO",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE BLOCCATA COMPOSIZIONE: Struttura fitura olmo perla, frontali elementi sospesi fitu...",
+    "dimensions": "L. 240"
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "omega",
+    "title": "OMEGA",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE BLOCCATA COMPOSIZIONE: Struttura fitura olmo perla, frontali elementi sospesi fitu...",
+    "dimensions": "L. 240"
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "ibiza",
+    "title": "IBIZA",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE BLOCCATA COMPOSIZIONE: Struttura fitura olmo perla, frontali elementi sospesi fitu...",
+    "dimensions": "L. 240"
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "leon",
+    "title": "LEON",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE BLOCCATA COMPOSIZIONE: Struttura fitura olmo perla, frontali elementi sospesi fitu...",
+    "dimensions": "L. 240"
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "newmaster",
+    "title": "NEWMASTER",
+    "cover": "",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PRODOTTI NEW MASTER PARETE BLOCCATA COMPOSIZIONE: Struttura fitura olmo perla, frontali a...",
+    "dimensions": "L. 300"
+  },
+  {
+    "catSlug": "pareti-bloccate",
+    "catLabel": "Pareti bloccate",
+    "slug": "alexandra",
+    "title": "ALEXANDRA",
+    "cover": "catalogo-assets/premobil/ALEXANDRA-01.jpg",
+    "desc": "PRODOTTI COMPONIBILI E MADIE ' PARETE BLOCCATA COMPOSIZIONE: 01 - Struttura fitura olmo perla, frontali ante fitura bian...",
+    "dimensions": ""
+  }
+]
