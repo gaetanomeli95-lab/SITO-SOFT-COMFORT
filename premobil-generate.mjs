@@ -9,6 +9,7 @@ const slugify = (s) => s.toLowerCase()
   .replace(/\s+/g, '-')
   .replace(/[^a-z0-9-]/g, '')
   .replace(/-+/g, '-')
+  .replace(/^-|-$/g, '')
   .substring(0, 60);
 
 const escapeHtml = (s) => (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -150,7 +151,7 @@ await fs.mkdir(cameraDir, { recursive: true });
 const cameraCards = [];
 
 for (const p of camere) {
-  const slug = 'premobil-' + slugify(p.title);
+  const slug = slugify(p.title.replace(/PREMOBIL\s*\d{4}/i, '').trim());
   const desc = cleanDesc(p.description, p.title, true);
   const images = p.bgs.length > 0 ? p.bgs.map(u => {
     const fname = path.basename(u).replace(/[^a-zA-Z0-9._-]/g, '_');
@@ -169,7 +170,7 @@ for (const p of camere) {
   await fs.writeFile(path.join(cameraDir, filename), html, 'utf8');
   console.log('Created:', filename);
 
-  const nameClean = p.title.replace(/CAMERA|ARMADI/i, '').trim();
+  const nameClean = p.title.replace(/CAMERA|ARMADI|PREMOBIL\s*\d{4}/gi, '').replace(/\s*-\s*$/, '').trim();
   const cover = images[0];
   const shortDesc = (desc || '').substring(0, 120) + ((desc || '').length > 120 ? '...' : '');
   cameraCards.push(`    <article class="product-card" id="product-camere-da-letto-${slug}" data-catalog-item data-page="1">

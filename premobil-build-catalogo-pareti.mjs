@@ -18,8 +18,8 @@ const sections = Object.entries(categories).map(([catSlug, catLabel]) => {
   const items = cards.filter(c => c.catSlug === catSlug);
   if (items.length === 0) return '';
   const cardsHtml = items.map(c => `    <article class="product-card" id="product-pareti-${c.slug}" data-catalog-item data-page="1">
-      <a class="product-media" href="pareti-attrezzate/${c.slug}.html">
-        <img src="${c.cover || ASSETS + '/LA-DUNE-TORTORA-001.jpg'}" alt="${c.title}" loading="lazy">
+      <a class="product-media ${c.cover ? '' : 'product-media-empty'}" href="pareti-attrezzate/${c.slug}.html">
+        ${c.cover ? `<img src="${c.cover}" alt="${c.title}" loading="lazy">` : `<div class="product-placeholder">Immagine disponibile in showroom</div>`}
         <span>Selezione Soft Comfort</span>
       </a>
       <div class="product-body">
@@ -94,8 +94,9 @@ const html = `<!DOCTYPE html>
     .catalog-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap:24px; }
     .product-card { display:flex; flex-direction:column; min-height:100%; border:1px solid var(--line); border-radius:30px; background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); backdrop-filter:blur(16px); overflow:hidden; transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
     .product-card:hover { transform:translateY(-8px); border-color:rgba(217,168,88,.42); box-shadow:0 36px 120px rgba(242,15,31,.16); }
-    .product-media { position:relative; display:block; aspect-ratio:4/3; overflow:hidden; }
+    .product-media { position:relative; display:block; aspect-ratio:4/3; overflow:hidden; background:linear-gradient(135deg, rgba(242,15,31,.16), rgba(217,168,88,.12)), #171313; }
     .product-media img { width:100%; height:100%; object-fit:cover; transition:transform .55s ease, filter .55s ease; }
+    .product-placeholder { display:flex; align-items:center; justify-content:center; width:100%; height:100%; padding:24px; color:rgba(248,244,238,.78); font-weight:900; letter-spacing:.08em; text-align:center; text-transform:uppercase; }
     .product-card:hover .product-media img { transform:scale(1.09); filter:saturate(1.08) contrast(1.04); }
     .product-media span { position:absolute; left:14px; top:14px; padding:7px 11px; border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(0,0,0,.45); backdrop-filter:blur(14px); font-size:.68rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
     .product-body { display:grid; gap:10px; padding:20px; }

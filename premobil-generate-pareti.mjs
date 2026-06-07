@@ -49,6 +49,7 @@ const detailTemplate = (p, slug, images, desc) => `<!DOCTYPE html>
     .detail-hero { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr); gap:28px; align-items:stretch; }
     .hero-image { position:relative; min-height:620px; overflow:hidden; border:1px solid var(--line); border-radius:34px; background:#141414; box-shadow:0 34px 110px rgba(0,0,0,.42); }
     .hero-image img { width:100%; height:100%; object-fit:cover; }
+    .hero-placeholder { display:flex; align-items:center; justify-content:center; width:100%; height:100%; min-height:620px; padding:34px; background:linear-gradient(135deg, rgba(242,15,31,.16), rgba(217,168,88,.12)); color:rgba(248,244,238,.82); font-weight:900; letter-spacing:.1em; text-align:center; text-transform:uppercase; }
     .hero-image span { position:absolute; left:20px; top:20px; padding:9px 13px; border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(0,0,0,.45); backdrop-filter:blur(14px); font-size:.72rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; }
     .detail-copy, .gallery-section, .detail-info { border:1px solid var(--line); border-radius:34px; background:linear-gradient(180deg, rgba(255,255,255,.072), rgba(255,255,255,.035)); backdrop-filter:blur(18px); }
     .detail-copy { display:grid; align-content:center; gap:18px; padding:34px; }
@@ -78,7 +79,7 @@ const detailTemplate = (p, slug, images, desc) => `<!DOCTYPE html>
     <a class="back-link" href="../catalogo-pareti-attrezzate.html#product-pareti-${slug}">← Torna al catalogo</a>
     <section class="detail-hero">
       <div class="hero-image">
-        <img src="../${images[0] || ''}" alt="${p.title}">
+        ${images[0] ? `<img src="../${images[0]}" alt="${p.title}">` : `<div class="hero-placeholder">Immagine disponibile in showroom</div>`}
         <span>Soft Comfort</span>
       </div>
       <div class="detail-copy">
