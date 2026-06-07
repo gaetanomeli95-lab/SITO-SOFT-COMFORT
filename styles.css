@@ -1704,7 +1704,7 @@ h1 {
 
   .site-header.menu-open .nav-dropdown.is-open .nav-dropdown-menu {
     opacity: 1;
-    max-height: 240px;
+    max-height: 340px;
     pointer-events: auto;
     transform: none;
   }
