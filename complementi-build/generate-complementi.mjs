@@ -35,7 +35,7 @@ const navHtml = `      <nav class="catalog-sticky-nav" aria-label="Navigazione c
         <a href="catalogo-camere-camerette.html" data-catalog-nav="camerette">Camerette</a>
         <a href="catalogo-camere-da-letto.html" data-catalog-nav="camere">Camere da letto</a>
         <a href="catalogo-materassi.html" data-catalog-nav="materassi">Materassi</a>
-        <a href="catalogo-complementi-arredi.html" data-catalog-nav="complementi" class="is-active">Complementi d'arredi</a>
+        <a href="catalogo-complementi-arredi.html" data-catalog-nav="complementi" class="is-active">Tavoli e sedie</a>
       </nav>`;
 
 const renderCard = (product, page) => {
@@ -51,9 +51,9 @@ const renderCard = (product, page) => {
         <span>Soft Comfort · ${category}</span>
       </a>
       <div class="product-body">
-        <p class="product-category">Complementi d'arredi · ${category}</p>
+        <p class="product-category">Tavoli e sedie · ${category}</p>
         <h2>${title}</h2>
-        <h3>${escapeHtml(product.dimensioni || categoryIntro[product.category] || 'Complemento d\'arredo')}</h3>
+        <h3>${escapeHtml(product.dimensioni || categoryIntro[product.category] || '')}</h3>
         <p>${escapeHtml(shortDetails)}${product.detailsText.split(' ').length > 22 ? '…' : ''}</p>
         <div class="chip-list"><span>${category}</span><span>Selezione Soft Comfort</span></div>
         <a class="product-detail-link" href="complementi-arredi/${product.slug}.html">Guarda dettagli e gallery</a>
@@ -171,11 +171,11 @@ let catalog = TEMPLATE
   .replace(/<title>Catalogo Divani Soft Comfort<\/title>/, '<title>Complementi d\'arredi Soft Comfort</title>')
   .replace(/<\/head>/, `${extraStyle}\n</head>`)
   .replace(/<nav class="catalog-sticky-nav"[\s\S]*?<\/nav>/, navHtml)
-  .replace(/<a class="catalog-sticky-cta"[\s\S]*?<\/a>/, '<a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20sui%20complementi%20d%27arredo." target="_blank" rel="noopener">Consulenza</a>')
+  .replace(/<a class="catalog-sticky-cta"[\s\S]*?<\/a>/, '<a class="catalog-sticky-cta" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20una%20consulenza%20su%20tavoli%20e%20sedie." target="_blank" rel="noopener">Consulenza</a>')
   .replace(/<section class="preview-hero">[\s\S]*?<\/section>/, `<section class="preview-hero">
-      <span class="eyebrow">Complementi d'arredi</span>
+      <span class="eyebrow">Tavoli e sedie</span>
       <h1>Tavoli, sedie e sgabelli</h1>
-      <p>Una selezione di complementi d'arredo organizzata per tavoli, sedie e sgabelli. Immagini, colori, finiture e disponibilità sono da verificare in fase di consulenza con Soft Comfort.</p>
+      <p>Una selezione di tavoli, sedie e sgabelli organizzata per sottocategorie. Immagini, colori, finiture e disponibilità sono da verificare in fase di consulenza con Soft Comfort.</p>
     </section>`)
   .replace(/<section class="category-section"[\s\S]*?\n  <\/main>/, `${sections}\n  </main>`)
   .replace(/<script>[\s\S]*?<\/script>\s*<\/body>/, `${script}\n</body>`);
@@ -351,7 +351,7 @@ const renderDetail = (product) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | Complementi d'arredi Soft Comfort</title>
+  <title>${title} | Tavoli e sedie Soft Comfort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -360,10 +360,10 @@ const renderDetail = (product) => {
 </head>
 <body>
   <main class="detail-page">
-    <a class="back-link" href="../catalogo-complementi-arredi.html#product-complementi-${product.slug}">← Torna ai complementi d'arredi</a>
+    <a class="back-link" href="../catalogo-complementi-arredi.html#product-complementi-${product.slug}">← Torna a tavoli e sedie</a>
     <section class="detail-hero">
       <div class="hero-copy">
-        <p class="category">Complementi d'arredi · ${category}</p>
+        <p class="category">Tavoli e sedie · ${category}</p>
         <h1>${title}</h1>
         <h2>${escapeHtml(product.dimensioni || categoryIntro[product.category] || '')}</h2>
         <p class="description">Scheda prodotto selezionata da Soft Comfort. Dettagli, finiture e disponibilità sono da confermare in showroom.</p>
