@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AREZZO | Soft Comfort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #050505;
+      --red: #f20f1f;
+      --red-dark: #a90914;
+      --gold: #d9a858;
+      --text: #f8f4ee;
+      --muted: rgba(248, 244, 238, 0.68);
+      --line: rgba(255, 255, 255, 0.12);
+      --font-body: 'Inter', sans-serif;
+      --font-display: 'Playfair Display', serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(217, 168, 88, 0.16), transparent 28%),
+        radial-gradient(circle at 86% 8%, rgba(242, 15, 31, 0.12), transparent 30%),
+        linear-gradient(180deg, #120808 0%, #070707 42%, #030303 100%);
+    }
+
+    a { color: inherit; }
+
+    .detail-shell {
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 34px 0 70px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .detail-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: #141414;
+      box-shadow: 0 34px 110px rgba(0, 0, 0, 0.42);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.015);
+      transition: opacity 0.24s ease, transform 0.45s ease;
+    }
+
+    .hero-image img.is-changing {
+      opacity: 0;
+      transform: scale(1.045);
+    }
+
+    .hero-image span {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .detail-copy {
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.035));
+      backdrop-filter: blur(18px);
+    }
+
+    .category {
+      margin: 0;
+      color: var(--gold);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 8vw, 7.4rem);
+      line-height: 0.86;
+      letter-spacing: -0.07em;
+    }
+
+    h2 {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.12rem;
+      line-height: 1.5;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      box-shadow: 0 16px 38px rgba(242, 15, 31, 0.28);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: none;
+    }
+
+    .gallery-section,
+    .detail-info {
+      margin-top: 28px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .gallery-viewer {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .gallery-main {
+      min-height: 520px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      background: #111;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.24s ease, transform 0.45s ease;
+    }
+
+    .gallery-main img.is-changing {
+      opacity: 0;
+      transform: scale(1.035);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-content: start;
+    }
+
+    .gallery-grid button {
+      display: block;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      background: #141414;
+      cursor: pointer;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-grid button:hover,
+    .gallery-grid button.is-active {
+      border-color: rgba(217, 168, 88, 0.58);
+      transform: translateY(-2px);
+    }
+
+    .gallery-grid button:hover img,
+    .gallery-grid button.is-active img {
+      transform: scale(1.08);
+    }
+
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .chip-list span {
+      padding: 9px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    @media (max-width: 960px) {
+      .detail-shell { width: min(100% - 28px, 620px); padding-top: 22px; }
+      .detail-hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 320px; }
+      .detail-copy { padding: 24px; }
+      .gallery-viewer { grid-template-columns: 1fr; }
+      .gallery-main { min-height: 360px; }
+      .gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .section-title { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .detail-shell { width: calc(100% - 20px); padding-top: 18px; }
+      .hero-image { min-height: 260px; }
+      .detail-copy { padding: 18px; }
+      .gallery-main { min-height: 280px; }
+      .gallery-grid { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scroll-snap-type: x mandatory; }
+      .gallery-grid button { flex: 0 0 34%; scroll-snap-align: start; }
+      h1 { font-size: clamp(2rem, 6vw, 3.2rem); }
+      h2 { font-size: clamp(1.1rem, 4vw, 1.4rem); }
+      .btn { padding: 12px 18px; font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="detail-shell">
+    <a class="back-link" href="../catalogo-divani.html#product-divani-arezzo">← Torna al catalogo divani</a>
+    <section class="detail-hero">
+      <div class="hero-image" style="background: #161616; position: relative; overflow: hidden;">
+        <img src="../catalogo-assets/soft-comfort-divani-arezzo-01.jpg" alt="Arezzo" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        <span>Collezione Soft Comfort</span>
+      </div>
+      <div class="detail-copy">
+        <p class="category">Divani</p>
+        <h1>AREZZO</h1>
+        <h2>Angolare · Trasformabile · Funzione letto</h2>
+        <p class="description">6 282x240 Angolare Trasformabile Funzione letto Poggiatesta reclinabile Pouf Contenitore + 2 Pouf sottobraccio</p>
+        <div class="detail-actions">
+          <a class="btn" href="https://wa.me/393929952453?text=Salve%20Soft%20Comfort%2C%20vorrei%20ricevere%20maggiori%20informazioni%20e%20una%20consulenza%20personalizzata%20per%20questa%20soluzione%3A%20TIFFANY.%20Categoria%3A%20Cucine%20classiche." target="_blank" rel="noopener">Richiedi consulenza WhatsApp</a>
+          <a class="btn btn-secondary" href="../catalogo-divani.html#product-divani-arezzo">Vedi altri divani</a>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-section">
+      <div class="section-title">
+        <div>
+          <p>Dettagli e angolazioni</p>
+          <h2>Gallery ambiente</h2>
+        </div>
+      </div>
+      <div class="gallery-viewer">
+        <div class="gallery-main">
+          <img data-main-gallery-image src="../catalogo-assets/soft-comfort-divani-arezzo-01.jpg" alt="arezzo selezione gallery">
+        </div>
+        <div class="gallery-grid">
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-01.jpg" class="is-active" aria-label="arezzo vista 1">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-01.jpg" alt="arezzo vista 1" loading="lazy">
+          </button>
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-02.jpg"  aria-label="arezzo vista 2">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-02.jpg" alt="arezzo vista 2" loading="lazy">
+          </button>
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-03.jpg"  aria-label="arezzo vista 3">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-03.jpg" alt="arezzo vista 3" loading="lazy">
+          </button>
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-04.jpg"  aria-label="arezzo vista 4">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-04.jpg" alt="arezzo vista 4" loading="lazy">
+          </button>
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-05.jpg"  aria-label="arezzo vista 5">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-05.jpg" alt="arezzo vista 5" loading="lazy">
+          </button>
+          <button type="button" data-gallery-image="../catalogo-assets/soft-comfort-divani-arezzo-06.jpg"  aria-label="arezzo vista 6">
+            <img src="../catalogo-assets/soft-comfort-divani-arezzo-06.jpg" alt="arezzo vista 6" loading="lazy">
+          </button>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  <script>
+    const mainGalleryImage = document.querySelector('[data-main-gallery-image]');
+    const galleryButtons = document.querySelectorAll('[data-gallery-image]');
+
+    galleryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const nextImage = button.getAttribute('data-gallery-image');
+        if (!mainGalleryImage || !nextImage || mainGalleryImage.getAttribute('src') === nextImage) return;
+
+        galleryButtons.forEach((item) => item.classList.remove('is-active'));
+        button.classList.add('is-active');
+        mainGalleryImage.classList.add('is-changing');
+
+        window.setTimeout(() => {
+          mainGalleryImage.setAttribute('src', nextImage);
+          mainGalleryImage.classList.remove('is-changing');
+        }, 160);
+      });
+    });
+
+    (function() {
+      const returnTarget = 'product-divani-arezzo';
+      document.querySelectorAll('.back-link, .btn-secondary').forEach((link) => {
+        link.addEventListener('click', () => sessionStorage.setItem('catalogReturnTarget', returnTarget));
+      });
+    })();
+  </script>
+</body>
+</html>
