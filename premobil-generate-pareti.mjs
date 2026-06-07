@@ -8,37 +8,18 @@ const ASSETS = 'catalogo-assets/premobil';
 const slugify = (s) => s.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').substring(0, 60);
 const escapeHtml = (s) => (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-const cleanDesc = (raw, title) => {
-  let t = raw;
-  const idx = t.indexOf('PRODOTTI');
-  if (idx !== -1) t = t.substring(idx);
-  const endIdx = t.search(/SCARICA LA SCHEDA|SPECIFICHE TECNICHE|PRODUZIONE Made in Italy|CONTATTA L'AZIENDA/);
-  if (endIdx !== -1) t = t.substring(0, endIdx);
-  const titleClean = title.trim();
-  t = t.replace(new RegExp('PRODOTTI\\s*' + titleClean.replace(/[-\s]/g, '[-\\s]?'), 'i'), '');
-  t = t.replace(/COMPOSIZIONE TIPO:?/gi, '');
-  t = t.replace(/FINITURE CASSA[^]*$/, '');
-  t = t.replace(/FINITURA CASSA[^]*$/, '');
-  t = t.replace(/PROGETTAZIONE[^]*$/, '');
-  t = t.replace(/DATE \d{4}/, '');
-  t = t.replace(/Made in Italy/, '');
-  t = t.replace(/DIMENSIONI[^]*$/, '');
-  t = t.replace(/Premobil s\.r\.l?/gi, 'Soft Comfort');
-  t = t.replace(/&times;/g, '×');
-  t = t.replace(/&#39;/g, "'");
-  t = t.replace(/HOME|AZIENDA|EXTRA|CONTATTI|PRIVACY POLICY|ETICHETTATURA AMBIENTALE|CARATTERISTICHE TECNICHE|CONDIZIONI GENERALI|ESEMPIO DI COMPONIBILITA/gi, '');
-  t = t.replace(/MADIE JOKER|PARETI A SPALLA|PARETI COMPONIBILI|PARETI BLOCCATE|NOTTE|COLLEZIONE THEO/gi, '');
-  t = t.replace(/JOKER|FOSTER|MERIDA|FORMENTERA|TAGO|BILBAO|MADRID|TOLEDO|NELSON|VIGO|CORDOVA|GRANADA|ARGO|OMEGA|IBIZA|LEON|NEWMASTER|ALEXANDRA/gi, '');
-  t = t.replace(/CAMERA LE DUNE|CAMERA COLORADO|CAMERA ATLANTA|ARMADI LE DUNE-COLORADO|CAMERA DAFNE|CAMERA ALASKA/gi, '');
-  t = t.replace(/GIORNO KENIA|COOPER DIVA SPECIAL/gi, '');
-  t = t.replace(/Cerca|Fb|Ig|In/gi, '');
-  t = t.replace(/▼/g, '');
-  t = t.replace(/\s+/g, ' ').trim();
-  if (t.length < 10) return '';
-  return t.substring(0, 380);
+const categoryDescription = (catSlug, title) => {
+  const descriptions = {
+    'madie-joker': `${title} è una madia moderna per la zona living, pensata per completare soggiorni e ambienti giorno con contenimento, stile e proporzioni equilibrate.`,
+    'pareti-a-spalla': `${title} è una soluzione a spalla componibile per arredare la zona living con vani contenitivi, elementi a giorno e finiture coordinate.`,
+    'pareti-componibili': `${title} è una parete componibile per soggiorno, progettata per creare composizioni personalizzabili, funzionali e coordinate con lo stile dell'ambiente.`,
+    'pareti-bloccate': `${title} è una parete attrezzata bloccata per zona living, ideale per ottenere una composizione completa, ordinata e pronta da inserire nel soggiorno.`,
+  };
+  return descriptions[catSlug] || `${title} è una parete attrezzata selezionata da Soft Comfort per arredare la zona living con stile e funzionalità.`;
 };
 
-const pareti = DATA.filter(p => !p.title.includes('CAMERA') && !p.title.includes('ARMADI'));
+const paretiTitles = ['JOKER','FOSTER','FOSTER COMPONIBILI E MADIE','MERIDA','FORMENTERA','TAGO','BILBAO','MADRID','TOLEDO','NELSON','VIGO','CORDOVA','GRANADA','ARGO','OMEGA','IBIZA','LEON','NEWMASTER','ALEXANDRA'];
+const pareti = DATA.filter(p => paretiTitles.includes(p.title));
 const categories = {
   'madie-joker': { label: 'Madie Joker', products: pareti.filter(p => p.title === 'JOKER') },
   'pareti-a-spalla': { label: 'Pareti a spalla', products: pareti.filter(p => p.title === 'FOSTER') },
@@ -143,7 +124,7 @@ const paretiCards = [];
 for (const [catSlug, cat] of Object.entries(categories)) {
   for (const p of cat.products) {
     const slug = slugify(p.title);
-    const desc = cleanDesc(p.description, p.title);
+    const desc = categoryDescription(catSlug, p.title);
     const images = p.bgs.length > 0 ? p.bgs.map(u => { const fname = path.basename(u).replace(/[^a-zA-Z0-9._-]/g, '_'); return `${ASSETS}/${fname}`; }) : [];
     await fs.writeFile(path.join(paretiDir, `${slug}.html`), detailTemplate(p, slug, images, desc), 'utf8');
     console.log('Created parete:', slug);
