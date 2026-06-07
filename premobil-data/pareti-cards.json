@@ -94,7 +94,7 @@
     "catLabel": "Pareti componibili",
     "slug": "vigo",
     "title": "VIGO",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/VIGO.jpg",
     "desc": "VIGO è una parete componibile per soggiorno, progettata per creare composizioni personalizzabili, funzionali e coordinat...",
     "dimensions": "L. 300"
   },
@@ -103,7 +103,7 @@
     "catLabel": "Pareti componibili",
     "slug": "cordova",
     "title": "CORDOVA",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/CORDOVA.jpg",
     "desc": "CORDOVA è una parete componibile per soggiorno, progettata per creare composizioni personalizzabili, funzionali e coordi...",
     "dimensions": ""
   },
@@ -112,7 +112,7 @@
     "catLabel": "Pareti componibili",
     "slug": "granada",
     "title": "GRANADA",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/GRANADA.jpg",
     "desc": "GRANADA è una parete componibile per soggiorno, progettata per creare composizioni personalizzabili, funzionali e coordi...",
     "dimensions": ""
   },
@@ -121,7 +121,7 @@
     "catLabel": "Pareti bloccate",
     "slug": "argo",
     "title": "ARGO",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/argo-01-1.jpg",
     "desc": "ARGO è una parete attrezzata bloccata per zona living, ideale per ottenere una composizione completa, ordinata e pronta ...",
     "dimensions": "L. 240"
   },
@@ -130,7 +130,7 @@
     "catLabel": "Pareti bloccate",
     "slug": "omega",
     "title": "OMEGA",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/omega-01-6.jpg",
     "desc": "OMEGA è una parete attrezzata bloccata per zona living, ideale per ottenere una composizione completa, ordinata e pronta...",
     "dimensions": "L. 240"
   },
@@ -139,7 +139,7 @@
     "catLabel": "Pareti bloccate",
     "slug": "ibiza",
     "title": "IBIZA",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/IBIZA01-20.jpg",
     "desc": "IBIZA è una parete attrezzata bloccata per zona living, ideale per ottenere una composizione completa, ordinata e pronta...",
     "dimensions": "L. 240"
   },
@@ -148,7 +148,7 @@
     "catLabel": "Pareti bloccate",
     "slug": "leon",
     "title": "LEON",
-    "cover": "",
+    "cover": "catalogo-assets/premobil/LEON-002-47.jpg",
     "desc": "LEON è una parete attrezzata bloccata per zona living, ideale per ottenere una composizione completa, ordinata e pronta ...",
     "dimensions": "L. 240"
   },
